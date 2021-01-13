@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 10/10/2020, 11:16:20 AM
-    Author     : Sammy Guergachi <sguergachi at gmail.com>
+    Author     : Juan Luis Frias
 --%>
 
 
