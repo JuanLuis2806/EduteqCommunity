@@ -18,5 +18,8 @@ public class AnunciosController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+		String nombre = "aquiestuvoalonso";
+
     }
 }
