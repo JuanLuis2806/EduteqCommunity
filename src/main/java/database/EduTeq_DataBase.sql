@@ -96,11 +96,11 @@ CREATE TABLE IF NOT EXISTS `eduteq`.`eventos` (
   `fecha_final` VARCHAR(45) NULL,
   `tipo_evento` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_eventos_1_idx` (`id_usuario` ASC, `tipo_evento` ASC) VISIBLE,
+  INDEX `fk_eventos_1_idx` (`id_usuario` ASC) VISIBLE,
   INDEX `fk_eventos_2_idx` (`tipo_evento` ASC) VISIBLE,
   CONSTRAINT `fk_eventos_1`
-    FOREIGN KEY (`id_usuario` , `tipo_evento`)
-    REFERENCES `eduteq`.`usuario` (`id` , `id`)
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `eduteq`.`usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_eventos_2`
@@ -137,6 +137,7 @@ ENGINE = InnoDB;
 -- Table `eduteq`.`publicacion_usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `eduteq`.`publicacion_usuario` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `id_usuario` INT NULL,
   `id_publicacion` INT NULL,
   `comentario` VARCHAR(45) NULL,
@@ -147,8 +148,8 @@ CREATE TABLE IF NOT EXISTS `eduteq`.`publicacion_usuario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_publicacion_usuario_2`
-    FOREIGN KEY ()
-    REFERENCES `eduteq`.`publicacion` ()
+    FOREIGN KEY (`id_usuario`)
+    REFERENCES `eduteq`.`publicacion` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
