@@ -57,11 +57,11 @@ CREATE TABLE IF NOT EXISTS `eduteq`.`usuario` (
   `id_division` INT NULL,
   `correo` VARCHAR(45) NULL,
   `matricula` VARCHAR(45) NULL,
-  `contraseña` VARCHAR(45) NULL,
+  `contrasena` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_usuario_1_idx` (`id_division` ASC) VISIBLE,
   CONSTRAINT `fk_usuario_1`
-    FOREIGN KEY (`id_division`)
+    FOREIGN KEY (`id_tipo_usuario`)
     REFERENCES `eduteq`.`tipo_usuario` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,

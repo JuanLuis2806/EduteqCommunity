@@ -33,10 +33,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
-    @NamedQuery(name = "Usuario.findByIdTipoUsuario", query = "SELECT u FROM Usuario u WHERE u.idTipoUsuario = :idTipoUsuario"),
     @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo"),
     @NamedQuery(name = "Usuario.findByMatricula", query = "SELECT u FROM Usuario u WHERE u.matricula = :matricula"),
-    @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a")})
+    @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,8 +44,6 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "id_tipo_usuario")
-    private Integer idTipoUsuario;
     @Size(max = 45)
     @Column(name = "correo")
     private String correo;
@@ -54,8 +51,8 @@ public class Usuario implements Serializable {
     @Column(name = "matricula")
     private String matricula;
     @Size(max = 45)
-    @Column(name = "contrase\u00f1a")
-    private String contraseña;
+    @Column(name = "contrasena")
+    private String contrasena;
     @OneToMany(mappedBy = "idUsuario")
     private List<Mercado> mercadoList;
     @OneToMany(mappedBy = "idPublicacion")
@@ -65,9 +62,9 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "id_division", referencedColumnName = "id")
     @ManyToOne
     private Division idDivision;
-    @JoinColumn(name = "id_division", referencedColumnName = "id")
+    @JoinColumn(name = "id_tipo_usuario", referencedColumnName = "id")
     @ManyToOne
-    private TipoUsuario idDivision1;
+    private TipoUsuario idTipoUsuario;
     @OneToMany(mappedBy = "idUsuario")
     private List<Perfil> perfilList;
 
@@ -86,14 +83,6 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public Integer getIdTipoUsuario() {
-        return idTipoUsuario;
-    }
-
-    public void setIdTipoUsuario(Integer idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -110,12 +99,12 @@ public class Usuario implements Serializable {
         this.matricula = matricula;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     @XmlTransient
@@ -153,12 +142,12 @@ public class Usuario implements Serializable {
         this.idDivision = idDivision;
     }
 
-    public TipoUsuario getIdDivision1() {
-        return idDivision1;
+    public TipoUsuario getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setIdDivision1(TipoUsuario idDivision1) {
-        this.idDivision1 = idDivision1;
+    public void setIdTipoUsuario(TipoUsuario idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 
     @XmlTransient
