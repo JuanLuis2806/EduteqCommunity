@@ -47,7 +47,7 @@ public class TipoUsuario implements Serializable {
     @Size(max = 45)
     @Column(name = "status")
     private String status;
-    @OneToMany(mappedBy = "idDivision1")
+    @OneToMany(mappedBy = "idTipoUsuario")
     private List<Usuario> usuarioList;
 
     public TipoUsuario() {
