@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "UsuarioController", urlPatterns = {"/login", "/inicio", "/verificar"})
+@WebServlet(name = "LoginController", urlPatterns = {"/login", "/inicio", "/verificar"})
 public class LoginController extends HttpServlet {
 
     @EJB
