@@ -1,7 +1,14 @@
 package controller;
 
+import beans.DivisionFacade;
+import beans.EstadoFacade;
+import entities.Division;
+import entities.Estado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +25,13 @@ public class UsuarioController extends HttpServlet {
     private static final String URL_REGISTRO_USUARIO = "/registro";
     private static final String URL_REGISTRO_PERFIL = "/perfil";
     private static final String RUTA_VISTAS = "/WEB-INF/";
+
+    @EJB
+    private DivisionFacade divisionFacade;
+    private Division division;
+    @EJB
+    private EstadoFacade estadoFacade;
+    private Estado estado;
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -38,6 +52,14 @@ public class UsuarioController extends HttpServlet {
             }
 
             case URL_REGISTRO_PERFIL: {
+                List<Division> divisiones = new ArrayList<>();
+                List<Estado> estados = new ArrayList<>();
+
+                divisiones = divisionFacade.findAll();
+                estados = estadoFacade.findAll();
+
+                request.setAttribute("divisiones", divisiones);
+                request.setAttribute("estados", estados);
                 request.getRequestDispatcher(RUTA_VISTAS + "Perfil.jsp").forward(request, response);
                 break;
 

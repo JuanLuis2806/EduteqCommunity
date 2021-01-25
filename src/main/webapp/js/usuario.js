@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 
         if (correo.value === "" || correo.value.length < 22 ||
-                !correo.value.includes("@uteq.edu.mx")) {
+            !correo.value.includes("@uteq.edu.mx")) {
             alert("Formato Incorrecto del correo, el formato debe ser: 1166237271@uteq.edu.mx");
             return;
         }
@@ -20,12 +20,12 @@ $(document).ready(function () {
         }
 
         if (password.value === "" || password.value.length < 8) {
-            alert("Introducir 10 digitos para el password!");
+            alert("Introducir 8 digitos para el password!");
             return;
         }
 
         if (confirmarPassword.value === "" || confirmarPassword.value.length < 8) {
-            alert("Introducir 10 digitos para el confirmacion de password!");
+            alert("Introducir 8 digitos para el confirmacion de password!");
             return;
         }
 
