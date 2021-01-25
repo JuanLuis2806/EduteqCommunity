@@ -14,18 +14,14 @@
         <link href="CSSEV/responsive.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,700,900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/estilos.css">
-        
-        <!--[if lt IE 9]>
-                <script src="js/html5shiv.js"></script>
-                <script src="js/respond.min.js"></script>
-        <![endif]-->       
+
         <link rel="icon" href="img/bg-img/img.png">
 
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    </head><!--/head-->
+    </head>
 
     <body>
         <header id="header" role="banner">		
@@ -55,7 +51,6 @@
                 </div>
             </div>                    
         </header>
-        <!--/#header--> 
 
         <section id="home">	
             <div id="main-slider" class="carousel slide" data-ride="carousel">
@@ -90,7 +85,6 @@
                 </div>
             </div>    	
         </section>
-        <!--/#home-->
 
         <section id="explore">
             <div class="container">
@@ -105,7 +99,7 @@
                 </div>
 
             </div>
-        </section><!--/#explore-->
+        </section>
 
         <section id="event">
             <div class="container">
@@ -160,7 +154,7 @@
 
                 </div>			
             </div>
-        </section><!--/#event-->
+        </section>
 
 
         <footer id="footer">
@@ -170,7 +164,6 @@
                 </div>
             </div>
         </footer>
-        <!--/#footer-->
 
         <script type="text/javascript" src="jss/jquery.js"></script>
         <script type="text/javascript" src="jss/bootstrap.min.js"></script>
@@ -183,13 +176,9 @@
         <script type="text/javascript" src="jss/jquery.nav.js"></script>
         <script type="text/javascript" src="jss/main.js"></script>  
         <script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
-    <!-- Active js -->
-    <script src="js/active.js"></script>
+        <script src="js/bootstrap/popper.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/plugins/plugins.js"></script>
+        <script src="js/active.js"></script>
     </body>
 </html>

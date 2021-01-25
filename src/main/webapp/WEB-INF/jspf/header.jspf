@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>EduTEQ COMMUNITY</title>
+        <link rel="icon" href="img/bg-img/birrete.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/comentario.css">
+    </head>
+    <body>
+        <div id="preloader">
+            <i class="circle-preloader"></i>
+        </div>
+        <header class="header-area">
+            <div class="top-header">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-12 h-100">
+                            <div class="header-content h-100 d-flex align-items-center justify-content-between">
+                                <div class="academy-logo">
+                                    <a href="index.jsp"><img src="img/bg-img/logo_eduteq.jpg" alt=""></a>
+                                </div>
+                                <div class="login-content">
+                                    <a href="Login.jsp">Inicio de Sesión/</a>
+                                    <a href="Registro.jsp">Registrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="academy-main-menu">
+                <div class="classy-nav-container breakpoint-off">
+                    <div class="container">
+                        <nav class="classy-navbar justify-content-between" id="academyNav">
+                            <div class="classy-navbar-toggler">
+                                <span class="navbarToggler"><span></span><span></span><span></span></span>
+                            </div>
+                            <div class="classy-menu">
+                                <div class="classycloseIcon">
+                                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                                </div>
+                                <div class="classynav">
+                                    <ul>
+                                        <li><a href="index.jsp">Pagina Principal</a>
+                                        <li><a href="Foro.jsp">Foro</a></li>
+                                        <li><a href="Eventos.jsp">Eventos</a></li>
+                                        <li><a href="mercado.jsp">Mercado UTEQ</a></li>
+                                        <li><a href="">Sesión</a>
+                                            <ul class="dropdown">
+                                                <li><a href="micuenta.jsp">Mi cuenta</a></li>
+                                                <li><a href="miperfil.jsp">Mi Perfil</a></li>
+                                                <li><a href="">Salir</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="calling-info">
+                                <div class="call-center">
+                                    <a>  <img src="img/bg-img/nuevopie2.png"></a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
