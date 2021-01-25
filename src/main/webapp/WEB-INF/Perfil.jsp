@@ -3,49 +3,34 @@
 <html lang="en">
     <head>
         <title>EduTEQ COMMUNITY</title>
-
-        <!-- Favicon -->
         <link rel="icon" href="img/bg-img/birrete.png">
         <link rel="stylesheet" href="css/Styles.css" TYPE="text/css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--===============================================================================================-->	
         <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-        <!--===============================================================================================-->	
         <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-        <!--===============================================================================================-->	
         <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-        <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
-
-
-        <!--===============================================================================================-->
     </head>
     <body>
 
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
-
+                    <form id="form-perfil" class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+                          enctype="multipart/form-data">
                         <div align="center" class="academy-logo">
                             <a href="index.jsp"><img src="img/bg-img/birrete.png" alt="">EduTEQ Community</a><br><br><br>
                         </div>
                         <span class="login100-form-title">
                             Perfil
                         </span>
-
                         <div class="wrap-input100 validate-input m-b-16">
                             <input class="input100" type="text" name="nombre" id="nombre" placeholder="Nombre" required="nombre">
                             <span class="focus-input100"></span>
@@ -54,12 +39,10 @@
                             <input class="input100" type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required="apellidos">
                             <span class="focus-input100"></span>
                         </div><br>
-
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="text" name="alias" placeholder="Sobre Nombre" required="alias">
+                            <input class="input100" type="text" name="alias" id="alias" placeholder="Sobre Nombre" required="alias">
                             <span class="focus-input100"></span>
                         </div><br>
-
                         <div class="wrap-input100 validate-input">
                             <input class="input100" type="text" name="pasatiempos" id="pasatiempos" placeholder="Pasatiempos" required="pasatiempos">
                             <span class="focus-input100"></span>
@@ -71,13 +54,11 @@
                                 <span class="focus-input100"></span>
                             </div><br>
                         </div>
-
                         <div class="wrap-input100 validate-input m-b-16">
                             <input class="input100" type="number" name="edad" id="edad" placeholder="Edad" required="edad">
 
                             <span class="focus-input100"></span>
                         </div><br>
-
                         <div  align="center" class="wrap-input100 validate-input">
                             <label>Estado</label>
                             <select class="select-css" id="estado" name="estado">
@@ -87,7 +68,6 @@
                             </select>
                             <span class="focus-input100"></span>
                         </div><br>
-
                         <div  align="center" class="wrap-input100 validate-input">
                             <label>Sexo</label>
                             <select class="select-css" id="sexo" name="sexo">
@@ -99,7 +79,6 @@
                             <span class="focus-input100"></span>
                         </div><br>
                         <div  align="center" class="wrap-input100 validate-input">
-
                             <label>División</label>
                             <select class="select-css" id="division" name="division">
                                 <c:forEach var="division" items="${divisiones}">
@@ -107,19 +86,23 @@
                                 </c:forEach>
                             </select>
                             <span class="focus-input100"></span>
+                        </div><br>                       
+                        <div  align="center" class="wrap-input100 validate-input">
+                            <label>Carrera</label>
+                            <select class="select-css" id="carrera" name="carrera">
+                                <c:forEach var="carrera" items="${carreras}">
+                                    <option value="${carrera.id}">${carrera.nombre}</option>
+                                </c:forEach>
+                            </select>
+                            <span class="focus-input100"></span>
                         </div><br>
-
                         <div  align="center" class="wrap-input100 validate-input">
                             <label> Imagen de Perfil</label><br>
                             <div class="wrap-input100 validate-input m-b-16">
-
                                 <input name="foto" id="foto" type="file" />
-
                                 <span class="focus-input100"></span>
                             </div><br>
                         </div>
-
-
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn">
                                 Finalizar
@@ -130,31 +113,20 @@
                                 Menú Principal
                             </a>						
                         </div><br><br>
-
-
-
                     </form>
                 </div>
             </div>
         </div>
-
-
-        <!--===============================================================================================-->
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-        <!--===============================================================================================-->
         <script src="vendor/animsition/js/animsition.min.js"></script>
-        <!--===============================================================================================-->
         <script src="vendor/bootstrap/js/popper.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!--===============================================================================================-->
         <script src="vendor/select2/select2.min.js"></script>
-        <!--===============================================================================================-->
         <script src="vendor/daterangepicker/moment.min.js"></script>
         <script src="vendor/daterangepicker/daterangepicker.js"></script>
-        <!--===============================================================================================-->
         <script src="vendor/countdowntime/countdowntime.js"></script>
-        <!--===============================================================================================-->
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script>        
+        <script src="js/perfil.js"></script>
         <style>
             .select-css {
                 display: block;

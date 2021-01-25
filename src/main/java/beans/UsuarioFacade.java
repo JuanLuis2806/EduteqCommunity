@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
@@ -35,5 +36,31 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
             return usuarios.get(0);
         }
         return null;
+    }
+    
+    public Usuario findByCorreo(String correo){
+        List<Usuario> usuarios;
+        Query query = em.createNamedQuery("Usuario.findByCorreo");
+        query.setParameter("correo", correo);
+        usuarios = query.getResultList();
+        
+        if (usuarios.size() > 0) {
+            return usuarios.get(0);
+        }
+        return null;
+        
+    }
+    
+    public Usuario findByMatricula(String matricula){
+        List<Usuario> usuarios;
+        Query query = em.createNamedQuery("Usuario.findByMatricula");
+        query.setParameter("matricula", matricula);
+        usuarios = query.getResultList();
+        
+        if (usuarios.size() > 0) {
+            return usuarios.get(0);
+        }
+        return null;
+        
     }
 }

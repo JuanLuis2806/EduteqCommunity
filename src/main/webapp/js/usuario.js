@@ -1,48 +1,54 @@
 
 $(document).ready(function () {
-    const btnSeguir = document.getElementById('btnSeguir');
-    btnSeguir.addEventListener('click', function () {
-        const correo = document.getElementById('correo'),
-                matricula = document.getElementById('matricula'),
-                password = document.getElementById('password'),
-                confirmarPassword = document.getElementById('Validapassword');
+    $('#form-registro').on("submit", function (e) {
+        e.preventDefault();
+        const correo = $("#correo"),
+                matricula = $("#matricula"),
+                password = $("#password"),
+                confirmarPassword = $("#Validapassword");
 
+        const data = new FormData();
+        data.append("correo", correo.val())
+        data.append("matricula", matricula.val())
 
-        if (correo.value === "" || correo.value.length < 22 ||
-            !correo.value.includes("@uteq.edu.mx")) {
-            alert("Formato Incorrecto del correo, el formato debe ser: 1166237271@uteq.edu.mx");
-            return;
-        }
-
-        if (matricula.value === "" || matricula.value.length < 10) {
-            alert("Formato Incorrecto de matricula!");
-            return;
-        }
-
-        if (password.value === "" || password.value.length < 8) {
-            alert("Introducir 8 digitos para el password!");
-            return;
-        }
-
-        if (confirmarPassword.value === "" || confirmarPassword.value.length < 8) {
-            alert("Introducir 8 digitos para el confirmacion de password!");
-            return;
-        }
-
-        if (password.value !== confirmarPassword.value) {
-            alert("Las contraseñas deben coincidir!");
-            return;
-        }
-
-        localStorage.setItem("correo", correo.value);
-        localStorage.setItem("matricula", matricula.value);
-        localStorage.setItem("password", password.value);
-
-        alert("Datos Correctos!")
-
-        window.location = "perfil";
+        $.ajax({
+            type: 'POST',
+            url: "registro",
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function (xhr) {
+            },
+            success: function (data) {
+                if (data === "OK") {
+                    if (!correo.val().includes("@uteq.edu.mx")) {
+                        correo.val("");
+                        correo.focus();
+                        alert("Formato Incorrecto del correo, el formato debe ser: 1166237271@uteq.edu.mx");
+                        return;
+                    }
+                    
+                    if (password.val() !== confirmarPassword.val()) {
+                        password.val("");
+                        confirmarPassword.val("");
+                        password.focus();
+                        alert("Las contraseñas deben coincidir!");
+                        return;
+                    }
+                    
+                    localStorage.setItem("correo", correo.val());
+                    localStorage.setItem("matricula", matricula.val());
+                    localStorage.setItem("password", password.val());
+                    alert("Datos Correctos!")
+                    window.location = "perfil";
+                }
+                alert(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Error!")
+            }
+        });
     });
-
 });
-
 

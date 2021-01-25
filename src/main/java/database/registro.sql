@@ -31,3 +31,22 @@ INSERT INTO `estado` (`id`, `estado`) VALUES
 (30, 'Veracruz'),
 (31, 'Yucatan'),
 (32, 'Zacatecas');
+
+INSERT INTO carrera (id, nombre)
+VALUES (1, 'Ingenieria en Tecnologias de la Informacion y la Comunicacion'),
+(2, 'Ingenieria en Tecnologias de Automatizacion');
+
+UPDATE tipo_usuario SET status = "Administrador" WHERE id = 1;
+UPDATE tipo_usuario SET status = "Estudiante" WHERE id = 2
+
+INSERT INTO usuario
+(id, id_tipo_usuario, id_division, correo, matricula, contrasena)
+VALUES(1, 1, 1, '2018113005@uteq.edu.mx', '2018113005', '12345678');
+
+INSERT INTO eduteq.perfil
+(id, id_usuario, nombre, apellidos, alias, pasatiempos, fecha_nacimiento, sexo, id_carrera, foto_perfil, edad, id_estado)
+VALUES(1, 1, 'Juan Luis', 'Frias Garcia', 'Juan ', 'Jugar Videojuegos', '2021-01-03', 'Hombre', 1, 'images.jpeg', 23, 1);
+
+ALTER TABLE perfil  MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE carrera CHANGE COLUMN `nombre` `nombre` VARCHAR(400);
+ALTER  TABLE perfil CHANGE COLUMN `foto_perfil` `foto_perfil` VARCHAR(500);
