@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,10 +19,12 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
+
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                    <form id="form-perfil" class="login100-form validate-form p-l-55 p-r-55 p-t-178"
+                          enctype="multipart/form-data">
                         <div align="center" class="academy-logo">
                             <a href="index.jsp"><img src="img/bg-img/birrete.png" alt="">EduTEQ Community</a><br><br><br>
                         </div>
@@ -29,55 +32,77 @@
                             Perfil
                         </span>
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="text" name="nombre" placeholder="Nombre" required="nombre">
+                            <input class="input100" type="text" name="nombre" id="nombre" placeholder="Nombre" required="nombre">
                             <span class="focus-input100"></span>
                         </div><br>
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="text" name="apellido" placeholder="Apellidos" required="apellidos">
+                            <input class="input100" type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required="apellidos">
                             <span class="focus-input100"></span>
                         </div><br>
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="text" name="alias" placeholder="Sobre Nombre" required="alias">
+                            <input class="input100" type="text" name="alias" id="alias" placeholder="Sobre Nombre" required="alias">
                             <span class="focus-input100"></span>
                         </div><br>
                         <div class="wrap-input100 validate-input">
-                            <input class="input100" type="text" name="pasatiempos" placeholder="Pasatiempos" required="pasatiempos">
-                            <span class="focus-input100"></span>
-                        </div><br>
-                        <p align="center"> Fecha de Nacimiento</p><br>
-                        <div class="wrap-input100 validate-input">
-                            <input class="input100" type="date" name="fecha" placeholder="Fecha de Nacimiento" required="fecha">
+                            <input class="input100" type="text" name="pasatiempos" id="pasatiempos" placeholder="Pasatiempos" required="pasatiempos">
                             <span class="focus-input100"></span>
                         </div><br>
                         <div  align="center" class="wrap-input100 validate-input">
-                            <select class="select-css">
-                                <option>Sexo</option>
-                                <option>Hombre</option>
-                                <option>Mujer</option>
-                                <option>Otro</option>
-                                <option>Prefiero no decirlo</option> 
-                            </select>
-                            <span class="focus-input100"></span>
-                        </div><br>
+                            <label align="center"> Fecha de Nacimiento</label><br>
+                            <div class="wrap-input100 validate-input">
+                                <input class="input100" type="date" name="fecha" id="fecha" placeholder="Fecha de Nacimiento" required="fecha">
+                                <span class="focus-input100"></span>
+                            </div><br>
+                        </div>
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="number" name="edad" placeholder="Edad" required="edad">
+                            <input class="input100" type="number" name="edad" id="edad" placeholder="Edad" required="edad">
+
                             <span class="focus-input100"></span>
                         </div><br>
                         <div  align="center" class="wrap-input100 validate-input">
-                            <select class="select-css">
-                                <option>Estado</option>
-                                <option>Queretaro</option>
-                                <option>Guanajuato</option>
-                                <option>Morelia</option>
-                                <option>Guadalajara</option> 
+                            <label>Estado</label>
+                            <select class="select-css" id="estado" name="estado">
+                                <c:forEach var="estado" items="${estados}">
+                                    <option value="${estado.id}">${estado.nombre}</option>
+                                </c:forEach>
                             </select>
                             <span class="focus-input100"></span>
                         </div><br>
-                        <p align="center"> Imagen de Perfil</p><br>
-                        <div class="wrap-input100 validate-input m-b-16">
-                            <input name="uploadedfile" type="file" />
+                        <div  align="center" class="wrap-input100 validate-input">
+                            <label>Sexo</label>
+                            <select class="select-css" id="sexo" name="sexo">
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Otro">Otro</option>
+                                <option value="Prefiero no decirlo">Prefiero no decirlo</option> 
+                            </select>
                             <span class="focus-input100"></span>
                         </div><br>
+                        <div  align="center" class="wrap-input100 validate-input">
+                            <label>División</label>
+                            <select class="select-css" id="division" name="division">
+                                <c:forEach var="division" items="${divisiones}">
+                                    <option value="${division.id}">${division.nombre}</option>
+                                </c:forEach>
+                            </select>
+                            <span class="focus-input100"></span>
+                        </div><br>                       
+                        <div  align="center" class="wrap-input100 validate-input">
+                            <label>Carrera</label>
+                            <select class="select-css" id="carrera" name="carrera">
+                                <c:forEach var="carrera" items="${carreras}">
+                                    <option value="${carrera.id}">${carrera.nombre}</option>
+                                </c:forEach>
+                            </select>
+                            <span class="focus-input100"></span>
+                        </div><br>
+                        <div  align="center" class="wrap-input100 validate-input">
+                            <label> Imagen de Perfil</label><br>
+                            <div class="wrap-input100 validate-input m-b-16">
+                                <input name="foto" id="foto" type="file" />
+                                <span class="focus-input100"></span>
+                            </div><br>
+                        </div>
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn">
                                 Finalizar
@@ -92,8 +117,6 @@
                 </div>
             </div>
         </div>
-
-
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
         <script src="vendor/animsition/js/animsition.min.js"></script>
         <script src="vendor/bootstrap/js/popper.js"></script>
@@ -102,7 +125,8 @@
         <script src="vendor/daterangepicker/moment.min.js"></script>
         <script src="vendor/daterangepicker/daterangepicker.js"></script>
         <script src="vendor/countdowntime/countdowntime.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script>        
+        <script src="js/perfil.js"></script>
         <style>
             .select-css {
                 display: block;
