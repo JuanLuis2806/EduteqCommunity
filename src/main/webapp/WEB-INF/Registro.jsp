@@ -18,6 +18,21 @@
     </head>
     <body>
         <div class="limiter">
+            <div id="msg-success" class="alert alert-success" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger" id="msg-danger" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-warning" id="msg-warning" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="container-login100">
                 <div class="wrap-login100">
                     <form id="form-registro"class="login100-form validate-form p-l-55 p-r-55 p-t-178">
@@ -47,13 +62,13 @@
                             <button class="login100-form-btn">
                                 Seguir
                             </button>
-                        </div><br><br>
-                        <div class="container-login100-form-btn">
-                            <a href="index.jsp" class="txt3">
-                                Menú Principal
-                            </a>						
-                        </div><br><br>
+                        </div><br><br>                      
                     </form>
+                    <div class="container-login100-form-btn">
+                        <a class="txt3" id="btn-menu">
+                            Menú Principal
+                        </a>						
+                    </div><br><br>
                 </div>
             </div>
         </div>

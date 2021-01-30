@@ -189,7 +189,7 @@ public class UsuarioController extends HttpServlet {
                 perfil.setIdEstado(estado);
                 perfilFacade.create(perfil);
                 
-                response.getWriter().println("OK");
+                response.getWriter().print("OK");
                 break;
             }
         }
