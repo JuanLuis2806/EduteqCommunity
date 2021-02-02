@@ -1,5 +1,10 @@
 
 $(document).ready(function () {
+    $("#btn-menu").on("click", function () {
+        $("#msg-success").append("<strong>Este es  el mensaje</strong>");
+        $("#msg-success").show("fade");
+
+    });
     $('#form-registro').on("submit", function (e) {
         e.preventDefault();
         const correo = $("#correo"),
@@ -25,30 +30,40 @@ $(document).ready(function () {
                     if (!correo.val().includes("@uteq.edu.mx")) {
                         correo.val("");
                         correo.focus();
-                        alert("Formato Incorrecto del correo, el formato debe ser: 1166237271@uteq.edu.mx");
+                        mostrarNotificacion("warning", "Formato Incorrecto del correo, el formato debe ser: 1234567891@uteq.edu.mx");
                         return;
                     }
-                    
+
                     if (password.val() !== confirmarPassword.val()) {
                         password.val("");
                         confirmarPassword.val("");
                         password.focus();
-                        alert("Las contraseñas deben coincidir!");
+                        mostrarNotificacion("warning", "!Los passwords deben coincidir!")
                         return;
                     }
-                    
+
                     localStorage.setItem("correo", correo.val());
                     localStorage.setItem("matricula", matricula.val());
                     localStorage.setItem("password", password.val());
-                    alert("Datos Correctos!")
+                    mostrarNotificacion("success", "Datos Correctos, Llena la informacion de tu perfil")
                     window.location = "perfil";
+                } else {
+                    mostrarNotificacion("warning", data);
                 }
-                alert(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                alert("Error!")
+                mostrarNotificacion("danger", "Ocurrio un error, intenta mas tarde")
             }
         });
+
+        function mostrarNotificacion(tipo = "succces", mensaje = "") {
+            $("#msg-" + tipo + " strong").remove();
+            $("#msg-" + tipo).append("<strong>" + mensaje + "</strong>");
+            $("#msg-" + tipo).show("fade");
+            setTimeout(function () {
+                $("#msg-" + tipo).hide("fade");
+            }, 2000);
+        }
     });
 });
 

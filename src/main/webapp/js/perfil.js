@@ -30,7 +30,7 @@ $(document).ready(function () {
         data.append("correo", localStorage.getItem('correo'));
         data.append("matricula", localStorage.getItem('matricula'));
         data.append("password", localStorage.getItem('password'));
-        
+
         $.ajax({
             type: 'POST',
             url: "perfil",
@@ -42,13 +42,26 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data === "OK") {
-                    alert("Datos Guardados Correctamente!");
+                    mostrarNotificacion("success", "!Datos Guardados correctamente!")
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                alert("Error!")
+                mostrarNotificacion("danger", "Ocurrio un error, intenta mas tarde")
             }
         });
+        
+        localStorage.removeItem("correo");
+        localStorage.removeItem("matricula");
+        localStorage.removeItem("password");
 
     });
+
+    function mostrarNotificacion(tipo = "succces", mensaje = "") {
+        $("#msg-" + tipo + " strong").remove();
+        $("#msg-" + tipo).append("<strong>" + mensaje + "</strong>");
+        $("#msg-" + tipo).show("fade");
+        setTimeout(function () {
+            $("#msg-" + tipo).hide("fade");
+        }, 2000);
+    }
 });
