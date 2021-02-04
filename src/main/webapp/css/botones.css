@@ -1,0 +1,50 @@
+.btn-bootstrap {
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #FF0500;
+  color: #fff;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-bootstrap:hover, .btn-bootstrap:focus {
+  background-color: #000;
+}
+
+.btn-bootstrap:active {
+  background-color: #0062cc;
+}
+
+
+
+.btn-bootstrap-act {
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #005eff;
+  color: #fff;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-bootstrap-act:hover, .btn-bootstrap:focus {
+  background-color: #000;
+}
+
+.btn-bootstrap-act:active {
+  background-color: #0062cc;
+}
+
+
+.btn-bootstrap-sus {
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #ffea00;
+  color: #fff;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-bootstrap-sus:hover, .btn-bootstrap:focus {
+  background-color: #000;
+}
+
+.btn-bootstrap-sus:active {
+  background-color: #0062cc;
+}
