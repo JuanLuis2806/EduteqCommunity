@@ -11,7 +11,7 @@
 }
 
 .btn-bootstrap:active {
-  background-color: #0062cc;
+  background-color: #FF0500;
 }
 
 
@@ -19,32 +19,49 @@
 .btn-bootstrap-act {
   padding: .375rem .75rem;
   border-radius: .25rem;
-  background-color: #005eff;
+  background-color: #008f39;
   color: #fff;
   transition: background-color .15s ease-in-out;
 }
 
-.btn-bootstrap-act:hover, .btn-bootstrap:focus {
+.btn-bootstrap-act:hover, .btn-bootstrap-act:focus {
   background-color: #000;
 }
 
 .btn-bootstrap-act:active {
-  background-color: #0062cc;
+  background-color: #008f39;
 }
 
 
 .btn-bootstrap-sus {
   padding: .375rem .75rem;
   border-radius: .25rem;
-  background-color: #ffea00;
+  background-color: #ff8000;
   color: #fff;
   transition: background-color .15s ease-in-out;
 }
 
-.btn-bootstrap-sus:hover, .btn-bootstrap:focus {
+.btn-bootstrap-sus:hover, .btn-bootstrap-sus:focus {
   background-color: #000;
 }
 
 .btn-bootstrap-sus:active {
-  background-color: #0062cc;
+  background-color: #ff8000;
+}
+
+
+.btn-bootstrap-activar {
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  background-color: #008f39;
+  color: #fff;
+  transition: background-color .15s ease-in-out;
+}
+
+.btn-bootstrap-activar:hover, .btn-bootstrap-activar:focus {
+  background-color: #000;
+}
+
+.btn-bootstrap-activar:active {
+  background-color: #008f39;
 }

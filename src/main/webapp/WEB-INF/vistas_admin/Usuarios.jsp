@@ -12,7 +12,7 @@
         <link href="css/TabUsuarios.css" rel="stylesheet" type="text/css">
         <link href="css/button_admin.css" rel="stylesheet" type="text/css">
         <link href="css/botones.css" rel="stylesheet" type="text/css">
-        <link href="css/paginacion.css" rel="stylesheet" type="text/css">
+        <link href="css/barra_paginado.css" rel="stylesheet" type="text/css">
         <link href="css/combobox.css" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -27,9 +27,6 @@
                             <div class="header-content h-100 d-flex align-items-center justify-content-between">
                                 <div class="academy-logo">
                                     <a href="index.jsp"><img src="img/bg-img/logo_eduteq.jpg" alt=""></a>          
-                                </div>
-                                <div class="login-content">
-                                    <a href="Login.jsp">Inicio de Sesión</a>        
                                 </div>
                             </div>
                         </div>
@@ -99,22 +96,22 @@
                         <div class="row">
                             <div class="col-12">    
                                 <div class="demo" style="text-align: right">
-                                        <form class="form-search">
-                                            <div class="input-group">
-                                                <input class="form-control form-text" maxlength="200" placeholder="Buscar" size="20" type="text"/>
-                                                <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <form class="form-search">
+                                        <div class="input-group">
+                                            <input class="form-control form-text" maxlength="200" placeholder="Buscar" size="20" type="text"/>
+                                            <span class="input-group-btn"><button class="btn btn-primary"><i class="fa fa-search fa-lg">&nbsp;</i></button></span>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">
                         <div class="academy-blog-posts">
-                            <div class="row">
+                            <div class="row jusjustify-content-center">
                                 <div id="main-container">
 
-                                    <table>
+                                    <table style="text-align: center">
                                         <thead>
                                             <tr>
                                                 <th>FOTO</th>
@@ -123,9 +120,10 @@
                                                 <th>Correo Electronico</th>
                                                 <th>Matricula</th>
                                                 <th>Contraseña</th>
-                                                <th>Acción</th>
-                                                <th>Acción 2</th>
-                                                <th>Acción 3</th>
+                                                <th>Accion 1</th>
+                                                <th>Accion 2</th>
+                                                <th>Reactivar</th>
+
                                             </tr>
                                         </thead>
 
@@ -136,9 +134,23 @@
                                             <td>2015348215@uteq.edu.mx</td>
                                             <td>2015348215</td>
                                             <td>Pako3011</td>
-                                            <td><button type="submit" class="btn-bootstrap"><img src="img/iconos-usuario/delete1.png"/>Eliminar</button></td>
-                                            <td><button type="submit" class="btn-bootstrap-act"><img src="img/iconos-usuario/actualizar1.png"/>Actualizar</button></td>
-                                            <td><button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/>Suspender</button></td>
+                                            <td><button type="submit" class="btn-bootstrap"><img src="img/iconos-usuario/delete1.png"/></button>
+                                            <button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/></button>
+                                            <button type="submit" class="btn-bootstrap-activar"><img src="img/iconos-usuario/cheque.png"/></td>
+                                            <td><button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/></button></td>
+                                            <td><button type="submit" class="btn-bootstrap-activar"><img src="img/iconos-usuario/cheque.png"/></button></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>ESTUDIANTE</td>
+                                            <td>Tecnologias de la Información</td>
+                                            <td>2015348215@uteq.edu.mx</td>
+                                            <td>2015348215</td>
+                                            <td>Pako3011</td>
+                                            <td><button type="submit" class="btn-bootstrap"><img src="img/iconos-usuario/delete1.png"/></button></td>
+                                            <td><button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/></button></td>
+                                            <td><button type="submit" class="btn-bootstrap-activar"><img src="img/iconos-usuario/cheque.png"/></button></td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -148,8 +160,8 @@
                                             <td>2015348215</td>
                                             <td>Pako3011</td>
                                             <td><button type="submit" class="btn-bootstrap"><img src="img/iconos-usuario/delete1.png"/>Eliminar</button></td>
-                                            <td><button type="submit" class="btn-bootstrap-act"><img src="img/iconos-usuario/actualizar1.png"/>Actualizar</button></td>
                                             <td><button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/>Suspender</button></td>
+                                            <td><button type="submit" class="btn-bootstrap-activar"><img src="img/iconos-usuario/cheque.png"/>Activar</button></td>
                                         </tr>
                                         <tr>
                                             <td></td>
@@ -159,27 +171,42 @@
                                             <td>2015348215</td>
                                             <td>Pako3011</td>
                                             <td><button type="submit" class="btn-bootstrap"><img src="img/iconos-usuario/delete1.png"/>Eliminar</button></td>
-                                            <td><button type="submit" class="btn-bootstrap-act"><img src="img/iconos-usuario/actualizar1.png"/>Actualizar</button></td>
                                             <td><button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/>Suspender</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>ESTUDIANTE</td>
-                                            <td>Tecnologias de la Información</td>
-                                            <td>2015348215@uteq.edu.mx</td>
-                                            <td>2015348215</td>
-                                            <td>Pako3011</td>
-                                            <td><button type="submit" class="btn-bootstrap"><img src="img/iconos-usuario/delete1.png"/>Eliminar</button></td>
-                                            <td><button type="submit" class="btn-bootstrap-act"><img src="img/iconos-usuario/actualizar1.png"/>Actualizar</button></td>
-                                            <td><button type="submit" class="btn-bootstrap-sus"><img src="img/iconos-usuario/suspendido1.png"/>Suspender</button></td>
+                                            <td><button type="submit" class="btn-bootstrap-activar"><img src="img/iconos-usuario/cheque.png"/>Activar</button></td>
                                         </tr>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">    
+                                <div class="center">
+                                    <div class="pagination">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">    
+                        <div class="center">
+                            <div class="pagination">
+                                <a href="#">&laquo;</a>
+                                <a href="#">1</a>
+                                <a href="#" class="active">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&raquo;</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
