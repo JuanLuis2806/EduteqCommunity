@@ -45,6 +45,8 @@ public class Division implements Serializable {
     private String nombre;
     @OneToMany(mappedBy = "idDivision")
     private List<Usuario> usuarioList;
+    @OneToMany(mappedBy = "idDivision")
+    private List<Carrera> carreraList;
 
     public Division() {
     }
@@ -78,6 +80,15 @@ public class Division implements Serializable {
         this.usuarioList = usuarioList;
     }
 
+    @XmlTransient
+    public List<Carrera> getCarreraList() {
+        return carreraList;
+    }
+
+    public void setCarreraList(List<Carrera> carreraList) {
+        this.carreraList = carreraList;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
+import beans.CarreraFacade;
+import beans.DivisionFacade;
+import beans.EstadoFacade;
 import beans.UsuarioFacade;
+import entities.Perfil;
 import entities.Usuario;
+import interfaces.Estatus;
+import interfaces.Urls;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,28 +17,61 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "LoginController", urlPatterns = {"/login", "/inicio", "/verificar"})
+@WebServlet(name = "LoginController", urlPatterns = {
+    Urls.URL_LOGIN,
+    Urls.URL_LOGIN_VALIDAR_DATOS,
+    Urls.URL_PRINCIPAL_PERFIL,
+})
 public class LoginController extends HttpServlet {
 
     @EJB
     private UsuarioFacade usuariofacade;
-
     private HttpSession session;
+    @EJB
+    private EstadoFacade estadoFacade;
+    @EJB
+    private CarreraFacade carreraFacade;
+    @EJB
+    private DivisionFacade divisionFacade;
 
+    @Override
+    public void init() throws ServletException {
+        getServletContext().setAttribute("estados", estadoFacade.findAll());
+        getServletContext().setAttribute("divisiones", divisionFacade.findAll());
+        
+    }
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         switch (request.getServletPath()) {
-            case "/login":
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            case Urls.URL_LOGIN: {
+                request.getRequestDispatcher(Urls.RUTA_VISTAS + "Login.jsp").forward(request, response);
                 break;
-            case "/inicio":
+            }
+            case Urls.URL_PRINCIPAL_PERFIL: {
                 session = request.getSession(true);
+                Perfil perfil = new Perfil();
+                String vista = "";
                 if (session.getAttribute("usuario") != null) {
                     Usuario usuario = (Usuario) session.getAttribute("usuario");
+                    if (usuario.getIdTipoUsuario().getId() == Estatus.ESTATUS_ADMINISTRADOR) {
+                        vista = "mi-cuenta-admin";
+                    }
+                    if (usuario.getIdTipoUsuario().getId() == Estatus.ESTATUS_ESTUDIANTE) {
+                        vista = "mi-cuenta-usuario";
+                    }
+                    
+                    if (usuario.getPerfilList().size() > 0) {
+                        perfil = usuario.getPerfilList().get(0);
+                    }
+                    
+                    session.setAttribute("perfil", perfil);
+                    request.setAttribute("perfil", perfil);
                     request.setAttribute("usuario", usuario);
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher(Urls.RUTA_VISTAS_ESTUDIANTE + vista + ".jsp").forward(request, response);
                 }
                 break;
+            }
         }
     }
 
@@ -46,18 +79,19 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         switch (request.getServletPath()) {
-            case "/verificar":
+            case Urls.URL_LOGIN_VALIDAR_DATOS: {
                 String correo = request.getParameter("correo");
                 String contrasena = request.getParameter("contrasena");
                 Usuario usuario = usuariofacade.login(correo, contrasena);
                 if (usuario != null) {
                     session = request.getSession(true);
                     session.setAttribute("usuario", usuario);
-                    response.sendRedirect("inicio");
-                } else {
-                    response.sendRedirect("login?id=1");
+                    response.getWriter().print("OK");
+                    break;
                 }
+                response.getWriter().print("ContrasenaIncorrecta");
                 break;
+            }
         }
     }
 }

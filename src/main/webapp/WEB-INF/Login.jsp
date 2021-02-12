@@ -20,9 +20,24 @@
     <body>
 
         <div class="limiter">
+            <div id="msg-success" class="alert alert-success" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger" id="msg-danger" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-warning" id="msg-warning" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form action="verificar" method="post" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                    <form id="form-login" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
                         <div align="center" class="academy-logo">
                             <a href="index.jsp"><img src="img/bg-img/birrete.png" alt="">EduTEQ Community</a><br><br><br>
                         </div>
@@ -30,11 +45,11 @@
                             Iniciar Sesión
                         </span>
                         <div class="wrap-input100 validate-input m-b-16">
-                            <input class="input100" type="text" name="correo" placeholder="Correo electronico institucional">
+                            <input class="input100" type="email" id="correo" name="correo" placeholder="Correo electronico institucional" minlength="22" maxlength="22">
                             <span class="focus-input100"></span>
                         </div><br>
                         <div class="wrap-input100 validate-input">
-                            <input class="input100" type="password" name="contrasena" placeholder="Contraseña">
+                            <input class="input100" type="password" id="contrasena" name="contrasena" placeholder="Contraseña" minlength="8" maxlength="16">
                             <span class="focus-input100"></span>
                         </div><br><br>
                         <div class="container-login100-form-btn">
@@ -56,13 +71,6 @@
                             </a>
                         </div>
                     </form>
-                    <%if (request.getParameter("id") != null) {
-                            if (request.getParameter("id").equals("1")) {%>
-                    <script>
-                        alert("Usuario o contraseña incorrectos Vuelva a intentar");
-                    </script>
-                    <%}
-                        }%>
                 </div>
             </div>
         </div>
@@ -75,5 +83,6 @@
         <script src="vendor/daterangepicker/daterangepicker.js"></script>
         <script src="vendor/countdowntime/countdowntime.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/login.js"></script>
     </body>
 </html>
