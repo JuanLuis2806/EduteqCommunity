@@ -16,6 +16,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<br>
+<br>
+<br>
+<div id="msg-success" class="alert alert-success" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-danger" id="msg-danger" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-warning" id="msg-warning" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
@@ -26,8 +44,8 @@
     <div class="row">
         <div class="col-sm-3"><!--left col-->
             <div class="text-center">
-                <img src="imagenes/${perfil.fotoPerfil}" class="avatar img-circle img-thumbnail" alt="avatar">
-                <input type="file" class="text-center center-block file-upload">
+                <img src="imagenes/${perfil.fotoPerfil}" class="avatar img-circle img-thumbnail" alt="avatar" id="imagen">
+                <input type="file" id="foto" name="foto" class="text-center center-block file-upload">
             </div></hr><br>
         </div>
         <div class="col-sm-9">
@@ -39,32 +57,26 @@
             <div class="tab-content">
                 <div class="container tab-pane fade" id="cuenta">
                     <hr>
-                    <form class="form" action="##" method="post" id="formCuenta">
+                    <input type="hidden" id="usuarioId" name="usuarioId" value="${usuario.id}"/>
+                    <input type="hidden" id="perfilId" name="perfilId" value="${perfil.id}"/>  
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="correo"><h4>Correo Electronico</h4></label>
                                 <input type="text" class="form-control" name="correo" id="correo" value="${usuario.correo}" 
-                                       placeholder="Dirección Electronica" title="Debes llenar este campo">
+                                       placeholder="Dirección Electronica" title="Debes llenar este campo" disabled="disabled">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="matricula"><h4>Matricula</h4></label>
                                 <input type="text" class="form-control" name="matricula" id="last_name" placeholder="matricula" value="${usuario.matricula}"
-                                       title="Debes llenar este campo">
+                                       title="Debes llenar este campo" disabled="disabled">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
                 <div id="perfil" class="tab-pane active"><br>
                     <hr>
-                    <form class="form" action="##" method="post" id="registrationForm">
+                    <form class="form" id="perfilForm">
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="nombre"><h4>Nombre</h4></label>
@@ -103,10 +115,11 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="sexo"><h4>Sexo</h4></label>
+                                <input type="hidden" id="sexoId" value="${perfil.sexo}"/>
                                 <select class="select-css" id="sexo" name="sexo">
                                     <option>Selecciona</option>
-                                    <option>Hombre</option>
-                                    <option>Mujer</option>
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Mujer">Mujer</option>
                                 </select>
                             </div>
                         </div>
@@ -127,7 +140,7 @@
                                 <label for="carreas"><h4>Carrera</h4></label>
                                 <input type="hidden" id="carreraId" value="${perfil.idCarrera.id}"/>
                                 <select class="select-css" id="carreras" name="carreras">
-                                     
+
                                 </select>
                             </div>
                         </div>
@@ -161,23 +174,23 @@
                     <hr>
                     <form class="form" id="cambiarContrasena">
                         <div class="form-group">
-                            <div class="col-xs-6">
+                            <div class="col-xs-8">
                                 <label for="contrasena"><h4>Contraseña Antigua</h4></label>
-                                <input type="text" class="form-control" name="contrasena" id="contrasena" value="${usuario.contrasena}"
-                                       placeholder="Contrasena" title="Debes llenar este campo">
+                                <input type="password" class="form-control" name="password" id="password"
+                                       placeholder="Contrasena" title="Debes llenar este campo" required maxlength="16" minlength="8"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="nueva_contrasena"><h4>Nueva Contraseña</h4></label>
-                                <input type="text" class="form-control" name="nueva_contrasena" id="nueva_contrasena" placeholder="Escribe una contraseña nueva" 
+                                <input type="password" class="form-control" name="nueva_contrasena" id="nueva_contrasena" placeholder="Escribe una contraseña nueva" 
                                        title="Debes llenar este campo" maxlength="16" minlength="8">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="confirmar_contrasena"><h4>Confirmar Contraseña</h4></label>
-                                <input type="text" class="form-control" name="confirmar_contrasena" id="confirmar_contrasena" 
+                                <input type="password" class="form-control" name="confirmar_contrasena" id="confirmar_contrasena" 
                                        placeholder="Confirmar Contraseña" title="Debes llenar este campo" required maxlength="16" minlength="8">
                             </div>
                         </div>

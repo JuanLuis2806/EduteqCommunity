@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
     Urls.URL_LOGIN,
     Urls.URL_LOGIN_VALIDAR_DATOS,
     Urls.URL_PRINCIPAL_PERFIL,
+    Urls.URL_CERRAR_SESION
 })
 public class LoginController extends HttpServlet {
 
@@ -72,6 +73,17 @@ public class LoginController extends HttpServlet {
                 }
                 break;
             }
+            
+            case Urls.URL_CERRAR_SESION: {
+                session = request.getSession(true);
+                session.removeAttribute("perfil");
+                session.removeAttribute("usuario");
+                session.invalidate();
+                
+                response.sendRedirect("login");
+                break;
+            }
+                
         }
     }
 

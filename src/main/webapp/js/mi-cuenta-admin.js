@@ -2,70 +2,13 @@ $(document).ready(function () {
 
     actualizarDatosPerfil();
     actualizarContrasena();
-
-    const idDivision = $("#divisionId").val(),
-            idCarrera = $("#carreraId").val(),
-            idEstado = $("#estadoId").val(),
+    
+    const idEstado = $("#estadoId").val(),
             sexoId = $("#sexoId").val();
 
     $('#sexo > option[value="' + sexoId + '"]').attr('selected', 'selected');
-    $('#divisiones > option[value="' + idDivision + '"]').attr('selected', 'selected');
-    $('#divisiones').attr('disabled', true);
     $('#estados > option[value="' + idEstado + '"]').attr('selected', 'selected');
-
-    obtenerCarreraDefault(idDivision, idCarrera);
-
-    $("#divisiones").on("change", function () {
-        $.ajax({
-            type: 'get',
-            url: "obtener-carreras",
-            dataType: 'JSON',
-            data: {
-                idDivision: $(this).val()
-            },
-            beforeSend: function (xhr) {
-            },
-            success: function (data) {
-                if (data !== null) {
-                    var options = "";
-                    for (var i = 0; i < data.length; i++) {
-                        options += "<option value='" + data[i].idCarrera + "'>" + data[i].nombre + "</option>";
-                    }
-                    $("#carreras").html(options);
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-            }
-        });
-    });
-
 });
-
-function obtenerCarreraDefault(idDivision, idCarrera) {
-    $.ajax({
-        type: 'get',
-        url: "obtener-carreras",
-        dataType: 'JSON',
-        data: {
-            idDivision: idDivision
-        },
-        beforeSend: function (xhr) {
-        },
-        success: function (data) {
-            if (data !== null) {
-                var options = "";
-                for (var i = 0; i < data.length; i++) {
-                    options += "<option value='" + data[i].idCarrera + "'>" + data[i].nombre + "</option>";
-                }
-                $("#carreras").html(options);
-                $('#carreras > option[value="' + idCarrera + '"]').attr('selected', 'selected');
-                $('#carreras').attr('disabled', true);
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-        }
-    });
-}
 
 function actualizarDatosPerfil() {
     $("#perfilForm").on("submit", function (e) {
@@ -78,8 +21,6 @@ function actualizarDatosPerfil() {
                 edad = $('#edad'),
                 estado = $('#estados'),
                 sexo = $('#sexo'),
-                division = $('#divisiones'),
-                carrera = $('#carreras'),
                 imagen = $('#foto'),
                 idPerfil = $("#perfilId");
 
@@ -152,7 +93,7 @@ function actualizarContrasena() {
             },
             success: function (data) {
                 console.log(data);
-                
+
                 if (data === "OK") {
                     mostrarNotificacion("success", "Datos actualizados correctamente!");
                     contrasena.val("");
@@ -178,7 +119,7 @@ function actualizarContrasena() {
                     nuevaContrasena.focus();
                     return;
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 mostrarNotificacion("danger", "Ah ocurrido un error!")

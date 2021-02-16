@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,59 +16,160 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<br>
+<br>
+<br>
+<div id="msg-success" class="alert alert-success" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-danger" id="msg-danger" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-warning" id="msg-warning" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
-        <div class="col-sm-10"><h1>Mi Cuenta</h1></div>
-        <div class="col-sm-2"><a href="index.jsp" class="pull-right"><img title="profile image" class="img-responsive" src="img/bg-img/logo_eduteq.jpg"></a></div>
+        <br>
+        <br>
+        <div class="col-sm-10"><h3>Mi Cuenta</h3></div>
     </div>
     <div class="row">
         <div class="col-sm-3"><!--left col-->
             <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                <input type="file" class="text-center center-block file-upload">
+                <img src="imagenes/${perfil.fotoPerfil}" class="avatar img-circle img-thumbnail" alt="avatar" id="imagen">
+                <input type="file" id="foto" name="foto" class="text-center center-block file-upload">
             </div></hr><br>
         </div>
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Datos de Cuenta</a></li>
+                <li class="active"><a data-toggle="tab" href="#perfil">Datos del Perfil</a></li>
+                <li class="active"><a data-toggle="tab" href="#contrasena">Cambiar Contraseña</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="home">
+                <div id="perfil" class="tab-pane active"><br>
                     <hr>
-                    <form class="form" action="##" method="post" id="registrationForm">
+                    <form class="form" id="perfilForm">
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="first_name"><h4>Correo Electronico</h4></label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Dirección Electronica" title="Debes llenar este campo">
+                                <label for="nombre"><h4>Nombre</h4></label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" value="${perfil.nombre}"
+                                       placeholder="Escribe Nombre" title="Debes llenar este campo">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="last_name"><h4>Matricula</h4></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Matricula" title="Debes llenar este campo">
+                                <label for="apellidos"><h4>Apellidos</h4></label>
+                                <input type="text" class="form-control" name="apellidos" id="apellidos" value="${perfil.apellidos}"
+                                       placeholder="Escribe Apellidos" title="Debes llenar este campo">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="last_name"><h4>Contraseña</h4></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Contraseña" title="Debes llenar este campo">
+                                <label for="alias"><h4>Alias</h4></label>
+                                <input type="text" class="form-control" name="alias" id="alias" value="${perfil.alias}"
+                                       placeholder="Escribe un Alias" title="Debes llenar este campo">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="last_name"><h4>Verificación de Contraseña</h4></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Contraseña" title="Debes llenar este campo">
+                                <label for="pasatiempos"><h4>Pasatiempos</h4></label>
+                                <input type="text" class="form-control" name="pasatiempos" id="pasatiempos" value="${perfil.pasatiempos}"
+                                       placeholder="Escribe tus pasatiempos" title="Debes llenar este campo">
                             </div>
                         </div>
+                        <input type="hidden" id="usuarioId" name="usuarioId" value="${usuario.id}"/>
+                        <input type="hidden" id="perfilId" name="perfilId" value="${perfil.id}"/>  
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="correo"><h4>Correo Electronico</h4></label>
+                                <input type="text" class="form-control" name="correo" id="correo" value="${usuario.correo}" 
+                                       placeholder="Dirección Electronica" title="Debes llenar este campo" disabled="disabled">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="fecha"><h4>Fecha de nacimiento</h4></label>
+                                <input  class="form-control" type="date" name="fecha" id="fecha" value="${perfil.fechaNacimiento}"
+                                        title="Debes llenar este campo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="sexo"><h4>Sexo</h4></label>
+                                <input type="hidden" id="sexoId" value="${perfil.sexo}"/>
+                                <select class="select-css" id="sexo" name="sexo">
+                                    <option>Selecciona</option>
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Mujer">Mujer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="edad"><h4>Edad</h4></label>
+                                <input type="number" class="form-control" name="edad" id="edad" value="${perfil.edad}"
+                                       placeholder="Ingresa tu edad" title="Debes llenar este campo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="estado"><h4>Estado</h4></label>
+                                <input type="hidden" id="estadoId" value="${perfil.idEstado.id}"/>
+                                <select class="select-css" id="estados" name="estados">
+                                    <c:forEach var="estado" items="${estados}">
+                                        <option value="${estado.id}">${estado.nombre}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <div class="col-xs-12">
-                        <br>
-                        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
-                    </div>
+                <div id="contrasena" class="container tab-pane fade"><br>
+                    <hr>
+                    <form class="form" id="cambiarContrasena">
+                        <div class="form-group">
+                            <div class="col-xs-8">
+                                <label for="contrasena"><h4>Contraseña Antigua</h4></label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                       placeholder="Contrasena" title="Debes llenar este campo" required maxlength="16" minlength="8"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="nueva_contrasena"><h4>Nueva Contraseña</h4></label>
+                                <input type="password" class="form-control" name="nueva_contrasena" id="nueva_contrasena" placeholder="Escribe una contraseña nueva" 
+                                       title="Debes llenar este campo" maxlength="16" minlength="8">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="confirmar_contrasena"><h4>Confirmar Contraseña</h4></label>
+                                <input type="password" class="form-control" name="confirmar_contrasena" id="confirmar_contrasena" 
+                                       placeholder="Confirmar Contraseña" title="Debes llenar este campo" required maxlength="16" minlength="8">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Guardar</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                </form>
                 <hr>
             </div><br><br>
         </div>
@@ -116,3 +219,17 @@
         font-weight:normal;
     }
 </style>
+<br>
+<br>
+<br>
+<br>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<script src="js/main.js"></script>
+<script src="js/mi-cuenta-admin.js"></script>
