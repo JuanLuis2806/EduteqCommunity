@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -45,6 +47,9 @@ public class Carrera implements Serializable {
     private String nombre;
     @OneToMany(mappedBy = "idCarrera")
     private List<Perfil> perfilList;
+    @JoinColumn(name = "id_division", referencedColumnName = "id")
+    @ManyToOne
+    private Division idDivision;
 
     public Carrera() {
     }
@@ -78,6 +83,14 @@ public class Carrera implements Serializable {
         this.perfilList = perfilList;
     }
 
+    public Division getIdDivision() {
+        return idDivision;
+    }
+
+    public void setIdDivision(Division idDivision) {
+        this.idDivision = idDivision;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

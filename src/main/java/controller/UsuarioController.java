@@ -12,6 +12,7 @@ import entities.Estado;
 import entities.Perfil;
 import entities.TipoUsuario;
 import entities.Usuario;
+import interfaces.Urls;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,7 +37,12 @@ import services.SubirArchivoAServidor;
  *
  * @author juan
  */
-@WebServlet(name = "UsuarioController", urlPatterns = {"/registro", "/perfil"})
+@WebServlet(name = "UsuarioController", urlPatterns = {
+    "/registro",
+    "/perfil",
+    Urls.URL_EDITAR_DATOS_PERFIL,
+    Urls.URL_EDITAR_CONTRASENA
+})
 @MultipartConfig
 public class UsuarioController extends HttpServlet {
 
@@ -65,7 +71,6 @@ public class UsuarioController extends HttpServlet {
     @EJB
     private CarreraFacade carreraFacade;
     private Carrera carrera;
-    
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -131,7 +136,7 @@ public class UsuarioController extends HttpServlet {
                     response.getWriter().print("Matricula existente!");
                     break;
                 }
-                
+
                 response.getWriter().print("OK");
 
                 break;
@@ -143,7 +148,7 @@ public class UsuarioController extends HttpServlet {
                 String pasatiempo = request.getParameter("pasatiempo");
                 String fechaNaciemiento = request.getParameter("fechaNaciemiento");
                 int edad = Integer.parseInt(request.getParameter("edad"));
-                int  estadoId = Integer.parseInt(request.getParameter("estado"));
+                int estadoId = Integer.parseInt(request.getParameter("estado"));
                 int divisionId = Integer.parseInt(request.getParameter("division"));
                 int carreraId = Integer.parseInt(request.getParameter("carrera"));
                 String sexo = request.getParameter("sexo");
@@ -153,20 +158,19 @@ public class UsuarioController extends HttpServlet {
 
                 archivoServidor = new SubirArchivoAServidor(request, "/src/main/webapp/imagenes");
                 String nombreImagen = archivoServidor.__invoke();
-                
+
                 tipoUsuario = new TipoUsuario();
                 tipoUsuario = tipoUsuarioFacade.find(USUARIO_ESTUDIANTE);
-                
+
                 division = new Division();
                 division = divisionFacade.find(divisionId);
-                
+
                 carrera = new Carrera();
                 carrera = carreraFacade.find(carreraId);
-                
+
                 estado = new Estado();
                 estado = estadoFacade.find(estadoId);
-                
-                
+
                 usuario = new Usuario();
                 usuario.setIdTipoUsuario(tipoUsuario);
                 usuario.setIdDivision(division);
@@ -174,7 +178,7 @@ public class UsuarioController extends HttpServlet {
                 usuario.setMatricula(matricula);
                 usuario.setContrasena(password);
                 usuarioFacade.create(usuario);
-                
+
                 perfil = new Perfil();
                 perfil.setIdUsuario(usuario);
                 perfil.setNombre(nombre);
@@ -188,10 +192,75 @@ public class UsuarioController extends HttpServlet {
                 perfil.setEdad(edad);
                 perfil.setIdEstado(estado);
                 perfilFacade.create(perfil);
-                
+
                 response.getWriter().print("OK");
                 break;
             }
+
+            case Urls.URL_EDITAR_DATOS_PERFIL: {
+                int idPerfil = Integer.parseInt(request.getParameter("idPerfil"));
+                String nombre = request.getParameter("nombre");
+                String apellidos = request.getParameter("apellidos");
+                String alias = request.getParameter("alias");
+                String pasatiempo = request.getParameter("pasatiempo");
+                String fechaNaciemiento = request.getParameter("fechaNaciemiento");
+                int edad = Integer.parseInt(request.getParameter("edad"));
+                int estadoId = Integer.parseInt(request.getParameter("estado"));
+                String sexo = request.getParameter("sexo");
+
+                Perfil perfil = perfilFacade.find(idPerfil);
+
+                Part imagen = request.getPart("imagen");
+                String nombreImagen = "";
+                if (imagen.getContentType() != null) {
+                    archivoServidor = new SubirArchivoAServidor(request, "/src/main/webapp/imagenes");
+                    nombreImagen = archivoServidor.__invoke();
+                    if (nombreImagen != null) {
+                        perfil.setFotoPerfil(nombreImagen);
+                    }
+                } 
+                
+                estado = new Estado();
+                estado = estadoFacade.find(estadoId);
+                
+                perfil.setNombre(nombre);
+                perfil.setApellidos(apellidos);
+                perfil.setAlias(alias);
+                perfil.setPasatiempos(pasatiempo);
+                perfil.setFechaNacimiento(fechaNaciemiento);
+                perfil.setSexo(sexo);
+                perfil.setEdad(edad);
+                perfil.setIdEstado(estado);
+                perfilFacade.edit(perfil);
+                
+                response.getWriter().print(perfil.getFotoPerfil());
+                break;
+
+            }
+
+            case Urls.URL_EDITAR_CONTRASENA: {
+                int usuarioId = Integer.parseInt(request.getParameter("usuarioId"));
+                String contrasena = request.getParameter("contrasena");
+                String nuevaContrasena = request.getParameter("nuevaContrasena");
+                String confirmarContrasena = request.getParameter("confirmarContrasena");
+                
+                usuario = usuarioFacade.find(usuarioId);
+                if (!contrasena.equals(usuario.getContrasena())) {
+                    response.getWriter().print("ContrasenaIncorrecta");
+                    break;
+                }
+                
+                if (!nuevaContrasena.equals(confirmarContrasena)) {
+                    response.getWriter().print("ContrasenasNoIguales");
+                    break;
+                }
+                
+                usuario.setContrasena(nuevaContrasena);
+                usuarioFacade.edit(usuario);
+                 response.getWriter().print("OK");
+                break;
+            }
+
         }
     }
 }
