@@ -1,10 +1,13 @@
 package controller;
 
 import beans.MercadoFacade;
+import entities.Division;
 import entities.Mercado;
 import entities.Usuario;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -23,12 +26,13 @@ public class MercadoController extends HttpServlet {
     private static final String URL_MERCADO = "/mercado";
     private static final String URL_REGISTRO_PRODUCTO = "/agregarProducto";
     private static final String RUTA_VISTAS = "/WEB-INF/";
-    private static final int USUARIO_ADMIN = 1;
+    private static final int STATUS_OK = 1;
+    private static final int STATUS_FAIL = 1;
     private static final int USUARIO_ESTUDIANTE = 2;
     private static final String nombreSesion = "usuario";
     private SubirArchivoAServidor cargarArchivo;
     private ObtenerFechas obtenerFechas;
-
+ 
     @EJB
     private MercadoFacade mercadoFacade;
     private Mercado mercado;
@@ -55,9 +59,14 @@ public class MercadoController extends HttpServlet {
             throws ServletException, IOException {
         switch (request.getServletPath()) {
             case URL_REGISTRO_PRODUCTO:
-                sesion = request.getSession(true);
-                Usuario usuarioProductos = (Usuario) sesion.getAttribute(nombreSesion);
-                request.setAttribute("usuario", usuarioProductos);
+                //sesion = request.getSession(true);
+                //Usuario usuarioProductos = (Usuario) sesion.getAttribute(nombreSesion);
+                //request.setAttribute("usuario", usuarioProductos);
+                
+                List<Mercado> productos  = new ArrayList<>();
+                productos = mercadoFacade.findAll();
+                
+                request.setAttribute("productos", productos);
                 request.getRequestDispatcher(RUTA_VISTAS + "/vistas/mercado.jsp").forward(request, response);
                 break;
         }
@@ -83,15 +92,15 @@ public class MercadoController extends HttpServlet {
                 cargarArchivo = new SubirArchivoAServidor(request, "/src/main/webapp/imagenes");
                 String imagen = cargarArchivo.__invoke();
                 
-                String fechaActual = obtenerFechas.fechaActual();
-                Date fechaDate = obtenerFechas.parseFecha(fechaActual);
-                Date fechaFutura = obtenerFechas.sumarDiasAFecha(fechaDate, 2);
+                //String fechaActual = obtenerFechas.fechaActual();
+               // Date fechaDate = obtenerFechas.parseFecha(fechaActual);
+                //Date fechaFutura = obtenerFechas.sumarDiasAFecha(fechaDate, 2);
 
-                sesion = request.getSession(true);
-                Usuario usuarioProductos = (Usuario) sesion.getAttribute(nombreSesion);
+               // sesion = request.getSession(true);
+                //Usuario usuarioProductos = (Usuario) sesion.getAttribute(nombreSesion);
 
                 usuario = new Usuario();
-                usuario.setId(usuarioProductos.getId());
+                usuario.setId(1);
 
                 mercado = new Mercado();
                 mercado.setNombre(nombre);
@@ -100,6 +109,8 @@ public class MercadoController extends HttpServlet {
                 mercado.setPrecio(precio);
                 mercado.setIdUsuario(usuario);
                 mercadoFacade.create(mercado);
+                
+                response.getWriter().print("OK");
                 break;
         }
     }

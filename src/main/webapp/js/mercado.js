@@ -24,6 +24,7 @@ $(document).ready(function () {
             success: function (data) {
                 if ("OK" === data) {
                     alert("El producto fue agregado!!!")
+                    document.reset();
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {

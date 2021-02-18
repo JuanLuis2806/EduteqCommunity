@@ -45,14 +45,14 @@
                                     <label>Matricula:</label>
                                     <a  class="post-date">2015348215</a><br>
                                     <label>Producto:</label>
-                                    <a  class="post-meta">Materia electronico variado.<br></a>
+                                    <a  class="post-meta">${producto.nombre}<br></a>
                                     <label>Descripción:</label>
                                     <div class="post-meta">
-                                        <a>Contiene , voltimetro, resistencias variadas , cable calibre 10 , alambre , pienzas cortadoras etc.</a>
+                                        <a>${producto.descripcion}</a>
                                     </div>
                                     <label>Precio:</label>
                                     <div class="post-date">
-                                        <a>800.00 </a>
+                                        <a>$${producto.precio}.00 </a>
                                     </div><br><br>
                                     <a  class="post-meta">
                                         <textarea  cols="80" rows="10"  style="width:100%;"placeholder="comentar..." class="redondeadonorelieve"></textarea><br></a>
