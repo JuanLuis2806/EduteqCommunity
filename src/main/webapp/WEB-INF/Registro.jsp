@@ -65,8 +65,8 @@
                         </div><br><br>                      
                     </form>
                     <div class="container-login100-form-btn">
-                        <a class="txt3" id="btn-menu">
-                            Menú Principal
+                        <a class="txt3" href="index">
+                            Menu Principal
                         </a>						
                     </div><br><br>
                 </div>

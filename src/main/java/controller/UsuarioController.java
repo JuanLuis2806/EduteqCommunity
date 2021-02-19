@@ -12,6 +12,7 @@ import entities.Estado;
 import entities.Perfil;
 import entities.TipoUsuario;
 import entities.Usuario;
+import interfaces.Estatus;
 import interfaces.Urls;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,6 +31,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import services.SubirArchivoAServidor;
 
@@ -52,6 +54,7 @@ public class UsuarioController extends HttpServlet {
     private static final int USUARIO_ADMIN = 1;
     private static final int USUARIO_ESTUDIANTE = 2;
     private SubirArchivoAServidor archivoServidor;
+    private HttpSession session;
 
     @EJB
     private DivisionFacade divisionFacade;
@@ -177,6 +180,7 @@ public class UsuarioController extends HttpServlet {
                 usuario.setCorreo(correo);
                 usuario.setMatricula(matricula);
                 usuario.setContrasena(password);
+                usuario.setEstatus(Estatus.USUARIO_ACTIVO);
                 usuarioFacade.create(usuario);
 
                 perfil = new Perfil();
@@ -192,6 +196,10 @@ public class UsuarioController extends HttpServlet {
                 perfil.setEdad(edad);
                 perfil.setIdEstado(estado);
                 perfilFacade.create(perfil);
+
+                session = request.getSession(true);
+                session.setAttribute("usuario", usuario);
+                session.setAttribute("perfil", perfil);
 
                 response.getWriter().print("OK");
                 break;
@@ -218,11 +226,11 @@ public class UsuarioController extends HttpServlet {
                     if (nombreImagen != null) {
                         perfil.setFotoPerfil(nombreImagen);
                     }
-                } 
-                
+                }
+
                 estado = new Estado();
                 estado = estadoFacade.find(estadoId);
-                
+
                 perfil.setNombre(nombre);
                 perfil.setApellidos(apellidos);
                 perfil.setAlias(alias);
@@ -232,7 +240,7 @@ public class UsuarioController extends HttpServlet {
                 perfil.setEdad(edad);
                 perfil.setIdEstado(estado);
                 perfilFacade.edit(perfil);
-                
+
                 response.getWriter().print(perfil.getFotoPerfil());
                 break;
 
@@ -243,21 +251,21 @@ public class UsuarioController extends HttpServlet {
                 String contrasena = request.getParameter("contrasena");
                 String nuevaContrasena = request.getParameter("nuevaContrasena");
                 String confirmarContrasena = request.getParameter("confirmarContrasena");
-                
+
                 usuario = usuarioFacade.find(usuarioId);
                 if (!contrasena.equals(usuario.getContrasena())) {
                     response.getWriter().print("ContrasenaIncorrecta");
                     break;
                 }
-                
+
                 if (!nuevaContrasena.equals(confirmarContrasena)) {
                     response.getWriter().print("ContrasenasNoIguales");
                     break;
                 }
-                
+
                 usuario.setContrasena(nuevaContrasena);
                 usuarioFacade.edit(usuario);
-                 response.getWriter().print("OK");
+                response.getWriter().print("OK");
                 break;
             }
 

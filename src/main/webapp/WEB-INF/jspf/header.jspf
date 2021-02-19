@@ -21,7 +21,7 @@
                         <div class="col-12 h-100">
                             <div class="header-content h-100 d-flex align-items-center justify-content-between">
                                 <div class="academy-logo">
-                                    <a href="index.jsp"><img src="img/bg-img/logo_eduteq.jpg" alt=""></a>
+                                    <a href="index"><img src="img/bg-img/logo_eduteq.jpg" alt=""></a>
                                 </div>
                                 <div class="login-content">
                                     <a href="login">Inicio de Sesión/</a>
@@ -45,10 +45,10 @@
                                 </div>
                                 <div class="classynav">
                                     <ul>
-                                        <li><a href="index.jsp">Pagina Principal</a>
-                                        <li><a href="Foro.jsp">Foro</a></li>
-                                        <li><a href="Eventos.jsp">Eventos</a></li>
-                                        <li><a href="mercado.jsp">Mercado UTEQ</a></li>
+                                        <li><a href="index">Pagina Principal</a>
+                                        <li><a href="foro">Foro</a></li>
+                                        <li><a href="eventos">Eventos</a></li>
+                                        <li><a href="mercado">Mercado UTEQ</a></li>
                                         <li><a href="">Sesión</a>
                                             <ul class="dropdown">
                                                 <li><a href="principal-perfil">Mi cuenta</a></li>

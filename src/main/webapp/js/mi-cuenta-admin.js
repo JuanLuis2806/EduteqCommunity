@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    
+    $("#academyNav .classynav > ul li:nth-child(4)").after("<li id='usuarioTab'></li>");
+    $("#usuarioTab").append('<a href="admin-usuarios">USUARIOS</a>');
 
     actualizarDatosPerfil();
     actualizarContrasena();

@@ -3,6 +3,7 @@ package interfaces;
 
 public interface Urls {
    
+    static final String URL_INDEX = "/index";
     static final String URL_LOGIN = "/login";
     static final String URL_CERRAR_SESION = "/cerrar-sesion";
     static final String URL_LOGIN_VALIDAR_DATOS = "/verificar-datos";
@@ -17,5 +18,8 @@ public interface Urls {
     static final String URL_OBTENER_CARRERAS = "/obtener-carreras";
     static final String URL_EDITAR_DATOS_PERFIL = "/editar-datos-perfil";
     static final String URL_EDITAR_CONTRASENA = "/editar-contrasena";
+    static final String URL_MERCADO = "/mercado";
+    static final String URL_EVENTOS = "/eventos";
+    static final String URL_FORO = "/foro";
     
 }

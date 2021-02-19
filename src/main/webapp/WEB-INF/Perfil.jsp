@@ -105,9 +105,7 @@
                         <div  align="center" class="wrap-input100 validate-input">
                             <label>Carrera</label>
                             <select class="select-css" id="carrera" name="carrera">
-                                <c:forEach var="carrera" items="${carreras}">
-                                    <option value="${carrera.id}">${carrera.nombre}</option>
-                                </c:forEach>
+                                
                             </select>
                             <span class="focus-input100"></span>
                         </div><br>
@@ -120,12 +118,12 @@
                         </div>
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn">
-                                Finalizar
+                                Finalizar Registro
                             </button>
                         </div><br><br>
                         <div class="container-login100-form-btn">
-                            <a href="index.jsp" class="txt3">
-                                Menú Principal
+                            <a class="txt3" id="regresar">
+                                Regresar
                             </a>						
                         </div><br><br>
                     </form>
