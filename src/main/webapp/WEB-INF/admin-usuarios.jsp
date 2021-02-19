@@ -96,6 +96,13 @@
         </header>
 
         <div class="blog-area mt-50 section-padding-100">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms" id="divisiones">
+                        <h3>Usuarios eduTEQ COMMUNITY</h3>
+                    </div>
+                </div>
+            </div>
             <div id="msg-success" class="alert alert-success" style="width: 500px; height: 70px; float: right; position:relative; margin: 10px 0 0 10px; display: none;">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -141,106 +148,107 @@
                     </div>
                 </div>
             </div>
-            <br><br><br>
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms" id="divisiones">
-                        <h3>Carreras</h3>
-                    </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms" id="divisiones">
+                    <h3>Carreras</h3>
                 </div>
             </div>
-            <div class="partner-area section-padding-0-100">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
-                                <a align="center" href="#"><img src="img/iconos/ordenador.png" alt=""><img src="img/clients-img/TF_TecnoInformacion.png" alt=""></a>
-                                <a  align="center" href="#"><img src="img/iconos/mecanica.png"><img src="img/clients-img/TF_Mecanica.png" alt=""></a>
-                                <a align="center" href="#"><img src="img/iconos/circuito-electronico.png"><img src="img/clients-img/TF_Mecatronica.png" alt=""></a>
-                                <a align="center" href="#"><img src="img/iconos/ventas.png"><img src="img/clients-img/TF_Mercadotecnia.png" alt=""></a>
-                                <a align="center"href="#"><img src="img/iconos/devolucion-de-dinero.png"><img src="img/clients-img/TF_Administracion.png" alt=""></a>
-                            </div>
-                        </div><br><br><br><br>
-                    </div>
-                </div><br><br>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
-                                <a align="center" href="#"><img src="img/iconos/idioma.png" alt=""><img src="img/clients-img/TF_Idiomas.png" alt=""></a>
-                                <a  align="center" href="#"><img src="img/iconos/engrane.png"><img src="img/clients-img/TF_MantIndustrial.png" alt=""></a>
-                                <a align="center" href="#"><img src="img/iconos/logistica.png"><img src="img/clients-img/TF_Logistica.png" alt=""></a>
-                                <a align="center" href="#"><img src="img/iconos/negocios.png"><img src="img/clients-img/TF_DesNegocios.png" alt=""></a>
-                                <a align="center"href="#"><img src="img/iconos/quimica.png"><img src="img/clients-img/TF_QuimicaAmb.png" alt=""></a>
-                                <a align="center"href="#"><img src="img/iconos/nanotecnologia.png"><img src="img/clients-img/TF_Nanotecnologia.png" alt=""></a>
-                            </div>
-                        </div><br><br>
-                    </div>
+        </div>
+        <div class="partner-area section-padding-0-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
+                            <a align="center" href="#"><img src="img/iconos/ordenador.png" alt=""><img src="img/clients-img/TF_TecnoInformacion.png" alt=""></a>
+                            <a  align="center" href="#"><img src="img/iconos/mecanica.png"><img src="img/clients-img/TF_Mecanica.png" alt=""></a>
+                            <a align="center" href="#"><img src="img/iconos/circuito-electronico.png"><img src="img/clients-img/TF_Mecatronica.png" alt=""></a>
+                            <a align="center" href="#"><img src="img/iconos/ventas.png"><img src="img/clients-img/TF_Mercadotecnia.png" alt=""></a>
+                            <a align="center"href="#"><img src="img/iconos/devolucion-de-dinero.png"><img src="img/clients-img/TF_Administracion.png" alt=""></a>
+                        </div>
+                    </div><br><br><br><br>
+                </div>
+            </div><br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
+                            <a align="center" href="#"><img src="img/iconos/idioma.png" alt=""><img src="img/clients-img/TF_Idiomas.png" alt=""></a>
+                            <a  align="center" href="#"><img src="img/iconos/engrane.png"><img src="img/clients-img/TF_MantIndustrial.png" alt=""></a>
+                            <a align="center" href="#"><img src="img/iconos/logistica.png"><img src="img/clients-img/TF_Logistica.png" alt=""></a>
+                            <a align="center" href="#"><img src="img/iconos/negocios.png"><img src="img/clients-img/TF_DesNegocios.png" alt=""></a>
+                            <a align="center"href="#"><img src="img/iconos/quimica.png"><img src="img/clients-img/TF_QuimicaAmb.png" alt=""></a>
+                            <a align="center"href="#"><img src="img/iconos/nanotecnologia.png"><img src="img/clients-img/TF_Nanotecnologia.png" alt=""></a>
+                        </div>
+                    </div><br><br>
                 </div>
             </div>
-            <footer class="footer-area">
-                <div class="main-footer-area section-padding-100-0">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Footer Widget Area -->
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="footer-widget mb-100">
-                                    <div class="widget-title"> 
-                                    </div>
+        </div>
+        <footer class="footer-area">
+            <div class="main-footer-area section-padding-100-0">
+                <div class="container">
+                    <div class="row">
+                        <!-- Footer Widget Area -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="footer-widget mb-100">
+                                <div class="widget-title"> 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bottom-footer-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <p>
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados para los creadores del sitio.  <a href="" target="_blank"></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <div class="modal fade" id="genericModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalTitle"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" id="usuarioId" name="usuarioId" />
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="btnAceptar">Guardar Cambios</button>
+            </div>
+            <div class="bottom-footer-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados para los creadores del sitio.  <a href="" target="_blank"></a></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="..." class="rounded mr-2" alt="...">
-                    <strong class="mr-auto">Bootstrap</strong>
-                    <small class="text-muted">just now</small>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="toast-body">
-                    See? Just like this.
+        </footer>
+        <div class="modal fade" id="genericModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="usuarioId" name="usuarioId" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="btnAceptar">Guardar Cambios</button>
+                    </div>
                 </div>
             </div>
-            <script src="js/jquery/jquery-3.5.1.js"></script>
-            <script src="js/jquery/jquery.dataTables.min.js"></script>}
-            <script src="js/obtener-usuarios-admin.js"></script>
-            <script src="js/bootstrap/popper.min.js"></script>
-            <script src="js/bootstrap/bootstrap.min.js"></script>
-            <script src="js/plugins/plugins.js"></script>
-            <script src="js/active.js"></script>
+        </div>
+        <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded mr-2" alt="...">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small class="text-muted">just now</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                See? Just like this.
+            </div>
+        </div>
+        <script src="js/jquery/jquery-3.5.1.js"></script>
+        <script src="js/jquery/jquery.dataTables.min.js"></script>}
+        <script src="js/obtener-usuarios-admin.js"></script>
+        <script src="js/bootstrap/popper.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/plugins/plugins.js"></script>
+        <script src="js/active.js"></script>
     </body>
 </html>

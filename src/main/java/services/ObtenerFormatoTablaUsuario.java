@@ -9,7 +9,7 @@ public class ObtenerFormatoTablaUsuario {
         if (estatus == Estatus.USUARIO_ELIMINADO) {
             contenidoBotones
                     = "<td>"
-                    + "<button type='submit' class='btn-bootstrap' disabled='true'><img src='img/iconos-usuario/delete1.png'/>Eliminar</button>"
+                    + "<button type='submit' class='btn-bootstrap' disabled='true'><img src='img/iconos-usuario/delete1.png'/> Eliminar </button>"
                     + "<button type='submit' class='btn-bootstrap-sus' disabled='true'><img src='img/iconos-usuario/suspendido1.png'/>Suspender</button>"
                     + "</td>";
         }
@@ -18,7 +18,7 @@ public class ObtenerFormatoTablaUsuario {
             contenidoBotones
                     = "<td>"
                     + "<button type='submit' class='btn-bootstrap btn-eliminar'>"
-                    + "<img src='img/iconos-usuario/delete1.png'/>Eliminar"
+                    + "<img src='img/iconos-usuario/delete1.png'/> Eliminar "
                     + "</button>"
                     + "<button type='submit' class='btn-bootstrap-sus btn-sespender'>"
                     + "<img src='img/iconos-usuario/suspendido1.png'/>Suspender"
@@ -31,10 +31,10 @@ public class ObtenerFormatoTablaUsuario {
             contenidoBotones
                     = "<td>"
                     + "<button type='submit' class='btn-bootstrap btn-eliminar'>"
-                    + "<img src='img/iconos-usuario/delete1.png'/>Eliminar"
+                    + "<img src='img/iconos-usuario/delete1.png'/>  Eliminar "
                     + "</button>"
-                    + "<button type='submit' class='btn-bootstrap-sus btn-activar'>"
-                    + "<img src='img/iconos-usuario/actividado1.png'/>Activar"
+                    + "<button type='submit' class='btn-bootstrap-act btn-activar'>"
+                    + "<img src='img/iconos-usuario/1.png'/> Activar "
                     + "</button>"
                     + "</td>";
 
