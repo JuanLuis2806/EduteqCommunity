@@ -58,6 +58,7 @@
                     <hr>
                     <form class="form" id="perfilForm">
                         <div class="form-group">
+                            <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="${usuario.id}"/>
                             <div class="col-xs-6">
                                 <label for="nombre"><h4>Nombre</h4></label>
                                 <input type="text" class="form-control" name="nombre" id="nombre" value="${perfil.nombre}"

@@ -3,6 +3,7 @@ package controller;
 import beans.CarreraFacade;
 import beans.DivisionFacade;
 import beans.EstadoFacade;
+import beans.PerfilFacade;
 import beans.UsuarioFacade;
 import entities.Perfil;
 import entities.Usuario;
@@ -34,6 +35,8 @@ public class LoginController extends HttpServlet {
     private CarreraFacade carreraFacade;
     @EJB
     private DivisionFacade divisionFacade;
+    @EJB
+    private PerfilFacade perfilFacade;
 
     @Override
     public void init() throws ServletException {
@@ -58,18 +61,21 @@ public class LoginController extends HttpServlet {
                     if (usuario.getIdTipoUsuario().getId() == Estatus.ESTATUS_ADMINISTRADOR) {
                         vista = "mi-cuenta-admin";
                     }
+                    
                     if (usuario.getIdTipoUsuario().getId() == Estatus.ESTATUS_ESTUDIANTE) {
                         vista = "mi-cuenta-usuario";
                     }
                     
-                    if (usuario.getPerfilList().size() > 0) {
-                        perfil = usuario.getPerfilList().get(0);
+                    if (session.getAttribute("perfil") != null) {
+                        perfil = (Perfil) session.getAttribute("perfil");
                     }
                     
                     session.setAttribute("perfil", perfil);
                     request.setAttribute("perfil", perfil);
                     request.setAttribute("usuario", usuario);
                     request.getRequestDispatcher(Urls.RUTA_VISTAS_ESTUDIANTE + vista + ".jsp").forward(request, response);
+                } else {
+                    response.sendRedirect("index");
                 }
                 break;
             }
@@ -94,10 +100,11 @@ public class LoginController extends HttpServlet {
             case Urls.URL_LOGIN_VALIDAR_DATOS: {
                 String correo = request.getParameter("correo");
                 String contrasena = request.getParameter("contrasena");
-                Usuario usuario = usuariofacade.login(correo, contrasena);
-                if (usuario != null) {
+                Perfil perfil = perfilFacade.obtenerPerfil(correo, contrasena);
+                if (perfil != null) {
                     session = request.getSession(true);
-                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("usuario", perfil.getIdUsuario());
+                    session.setAttribute("perfil", perfil);
                     response.getWriter().print("OK");
                     break;
                 }

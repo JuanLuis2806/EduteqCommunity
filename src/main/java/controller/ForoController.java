@@ -16,15 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author juan
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-@WebServlet(name = "IndexController", urlPatterns = {
-    Urls.URL_INDEX
-})
-public class IndexController extends HttpServlet {
+@WebServlet(name = "ForoController", urlPatterns = {Urls.URL_FORO})
+public class ForoController extends HttpServlet {
 
     /**
-     * Handles the HTTP <code>GET</code> method. paco es puto
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -34,10 +32,9 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         switch (request.getServletPath()) {
-            case Urls.URL_INDEX: {
-                request.getRequestDispatcher(Urls.RUTA_VISTAS_ESTUDIANTE + "index.jsp").forward(request, response);                
+            case Urls.URL_FORO: {
+                request.getRequestDispatcher(Urls.RUTA_VISTAS_ESTUDIANTE + "Foro.jsp").forward(request, response);
             }
         }
     }
@@ -53,7 +50,6 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
-    
+
 }

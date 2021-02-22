@@ -1,5 +1,12 @@
 
 $(document).ready(function () {
+    obtenerCarreraDefault();
+    obtenerCarreras();
+
+    $("#regresar").on("click", function () {
+        localStorage.setItem("regresar", true);
+        window.location = "registro";
+    });
 
     const nombre = $('#nombre'),
             apellidos = $('#apellidos'),
@@ -42,26 +49,79 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data === "OK") {
-                    mostrarNotificacion("success", "!Datos Guardados correctamente!")
+                    mostrarNotificacion("success", "!Datos Guardados correctamente!");
+                    window.location = "principal-perfil";
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                mostrarNotificacion("danger", "Ocurrio un error, intenta mas tarde")
+                mostrarNotificacion("danger", "Ocurrio un error, intenta mas tarde");
             }
         });
-        
+
         localStorage.removeItem("correo");
         localStorage.removeItem("matricula");
         localStorage.removeItem("password");
 
     });
 
-    function mostrarNotificacion(tipo = "succces", mensaje = "") {
+    function mostrarNotificacion(tipo = "success", mensaje = "") {
         $("#msg-" + tipo + " strong").remove();
         $("#msg-" + tipo).append("<strong>" + mensaje + "</strong>");
         $("#msg-" + tipo).show("fade");
         setTimeout(function () {
             $("#msg-" + tipo).hide("fade");
-        }, 2000);
+        }, 5000);
     }
+
 });
+
+function obtenerCarreras() {
+    $("#division").on("change", function () {
+        $.ajax({
+            type: 'get',
+            url: "obtener-carreras",
+            dataType: 'JSON',
+            data: {
+                idDivision: $(this).val()
+            },
+            beforeSend: function (xhr) {
+            },
+            success: function (data) {
+                if (data !== null) {
+                    var options = "";
+                    for (var i = 0; i < data.length; i++) {
+                        options += "<option value='" + data[i].idCarrera + "'>" + data[i].nombre + "</option>";
+                    }
+                    $("#carrera").html(options);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+        });
+    });
+}
+
+function obtenerCarreraDefault() {
+    $.ajax({
+        type: 'get',
+        url: "obtener-carreras",
+        dataType: 'JSON',
+        data: {
+            idDivision: "1"
+        },
+        beforeSend: function (xhr) {
+        },
+        success: function (data) {
+            if (data !== null) {
+                var options = "";
+                for (var i = 0; i < data.length; i++) {
+                    options += "<option value='" + data[i].idCarrera + "'>" + data[i].nombre + "</option>";
+                }
+                $("#carrera").html(options);
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        }
+    });
+}
+

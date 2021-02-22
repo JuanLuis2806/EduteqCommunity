@@ -1,10 +1,10 @@
 
 $(document).ready(function () {
-    $("#btn-menu").on("click", function () {
-        $("#msg-success").append("<strong>Este es  el mensaje</strong>");
-        $("#msg-success").show("fade");
+    if (localStorage.getItem("regresar") !== null) {
+        $("#matricula").val(localStorage.getItem("matricula"));
+        $("#correo").val(localStorage.getItem("correo"));
+    }
 
-    });
     $('#form-registro').on("submit", function (e) {
         e.preventDefault();
         const correo = $("#correo"),

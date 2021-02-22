@@ -58,7 +58,7 @@
                             </button>
                         </div><br><br>
                         <div class="container-login100-form-btn">
-                            <a href="index.jsp" class="txt3">
+                            <a href="index" class="txt3">
                                 Menú Principal
                             </a>						
                         </div><br><br>
@@ -66,7 +66,7 @@
                             <span class="txt1 p-b-9">
                                 Aún no tienes una cuenta?
                             </span>
-                            <a href="Registro.jsp" class="txt3">
+                            <a href="registro" class="txt3">
                                 Registrar
                             </a>
                         </div>

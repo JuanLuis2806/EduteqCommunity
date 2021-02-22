@@ -58,7 +58,7 @@ public class AdminController extends HttpServlet {
 
         switch (request.getServletPath()) {
             case Urls.URL_ADMIN_USUARIOS: {
-                request.getRequestDispatcher(Urls.RUTA_VISTAS + "admin-usuarios.jsp").forward(request, response);
+                request.getRequestDispatcher(Urls.RUTA_VISTAS + "admin-usuarios_1.jsp").forward(request, response);
                 break;
             }
             case Urls.URL_ADMIN_OBTENER_USUARIOS: {
