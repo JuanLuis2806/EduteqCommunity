@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -43,9 +45,31 @@ public class Publicacion implements Serializable {
     @Size(max = 500)
     @Column(name = "contenido")
     private String contenido;
-    @OneToMany(mappedBy = "idUsuario")
+    @JoinColumn(name = "divicion_id", referencedColumnName = "id")
+    @ManyToOne
+    private Division idDivision;
+    @JoinColumn(name = "perfil_id", referencedColumnName = "id")
+    @ManyToOne
+    private Perfil idPerfil;
+    @OneToMany(mappedBy = "idPublicacion")
     private List<PublicacionUsuario> publicacionUsuarioList;
 
+    public Perfil getIdPerfil() {
+        return idPerfil;
+    }
+
+    public void setIdPerfil(Perfil idPerfil) {
+        this.idPerfil = idPerfil;
+    }
+    
+    public Division getIdDivision() {
+        return idDivision;
+    }
+
+    public void setIdDivision(Division idDivision) {
+        this.idDivision = idDivision;
+    }
+    
     public Publicacion() {
     }
 

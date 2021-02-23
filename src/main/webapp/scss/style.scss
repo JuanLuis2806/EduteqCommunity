@@ -369,7 +369,7 @@ img {
     }
     &.active,
     &:hover,
-    &:focus {
+        &:focus {
         font-size: 14px;
         font-weight: 600;
         color: $white-color;
@@ -378,14 +378,14 @@ img {
     &.btn-2 {
         background: $dark-color;
         &:hover,
-        &:focus {
+            &:focus {
             background: $hover-color;
         }
     }
     &.btn-3 {
         background: $hover-color;
         &:hover,
-        &:focus {
+            &:focus {
             background: $dark-color;
         }
     }
@@ -394,7 +394,7 @@ img {
         border: 2px solid $hover-color;
         color: $text-color;
         &:hover,
-        &:focus {
+            &:focus {
             background: $hover-color;
             color: $white-color;
         }
@@ -449,7 +449,7 @@ img {
                 font-weight: 700;
                 text-transform: uppercase;
                 &:hover,
-                &:focus {
+                    &:focus {
                     color: $hover-color;
                 }
             }
@@ -622,7 +622,7 @@ img {
         right: 5%;
     }
     &:hover .owl-prev,
-    &:hover .owl-next {
+        &:hover .owl-next {
         opacity: 1;
         visibility: visible;
     }
@@ -723,7 +723,7 @@ img {
         }
     }
     &:hover,
-    &:focus {
+        &:focus {
         .course-content {
             h4 {
                 color: $hover-color;
@@ -971,7 +971,7 @@ img {
                 color: $text-color;
                 margin-right: 15px;
                 &:hover,
-                &:focus {
+                    &:focus {
                     color: $white-color;
                 }
             }
@@ -985,7 +985,7 @@ img {
                     font-size: 14px;
                     font-weight: 500;
                     &:hover,
-                    &:focus {
+                        &:focus {
                         color: $hover-color;
                     }
                 }
@@ -1129,6 +1129,12 @@ img {
 
 /* Blog Area CSS */
 
+strong {
+    font-size: 15px;
+    color: $hover-color;
+    margin-bottom: 0;
+}
+
 .academy-blog-sidebar {
     @media #{$breakpoint-xs} {
         margin-top: 100px;
@@ -1144,18 +1150,18 @@ img {
         font-weight: 500;
         margin-bottom: 5px;
         &:hover,
-        &:focus {
+            &:focus {
             color: $hover-color;
         }
     }
     .post-meta {
         margin-bottom: 30px;
         p {
-            font-size: 12px;
+            font-size: 15px;
             color: $hover-color;
             margin-bottom: 0;
             a {
-                font-size: 12px;
+                font-size: 15px;
                 color: $hover-color;
                 font-weight: 500;
             }
@@ -1180,7 +1186,7 @@ img {
                 text-align: center;
                 line-height: 36px;
                 &:hover,
-                &:focus {
+                    &:focus {
                     background-color: $bg-default;
                     color: $white-color;
                 }
@@ -1248,7 +1254,7 @@ img {
                 margin-bottom: 10px;
                 display: block;
                 &:hover,
-                &:focus {
+                    &:focus {
                     color: $hover-color;
                 }
             }
@@ -1279,7 +1285,7 @@ img {
                     font-size: 14px;
                 }
                 &:hover,
-                &:focus {
+                    &:focus {
                     color: $hover-color;
                 }
             }

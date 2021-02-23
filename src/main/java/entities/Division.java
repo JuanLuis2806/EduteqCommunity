@@ -47,7 +47,17 @@ public class Division implements Serializable {
     private List<Usuario> usuarioList;
     @OneToMany(mappedBy = "idDivision")
     private List<Carrera> carreraList;
+    @OneToMany(mappedBy = "idDivision")
+    private List<Publicacion> publicacionList;
 
+    public List<Publicacion> getPublicacionList() {
+        return publicacionList;
+    }
+
+    public void setPublicacionList(List<Publicacion> publicacionList) {
+        this.publicacionList = publicacionList;
+    }
+    
     public Division() {
     }
 
