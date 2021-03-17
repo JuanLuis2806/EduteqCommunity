@@ -21,5 +21,8 @@ public interface Urls {
     static final String URL_MERCADO = "/mercado";
     static final String URL_EVENTOS = "/eventos";
     static final String URL_FORO = "/foro";
+    static final String URL_CREAR_PUBLICACION = "/crear-publicacion";
+    static final String URL_CREAR_COMENTARIO = "/crear-comentario";
+    static final String URL_OBTENER_PUNBLICACION_RESPUESTA = "/publicacion-respuesta";
     
 }

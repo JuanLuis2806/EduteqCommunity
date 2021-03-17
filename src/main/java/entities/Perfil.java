@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -79,7 +81,27 @@ public class Perfil implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario idUsuario;
+    @OneToMany(mappedBy = "idPerfil")
+    private List<PublicacionUsuario> publicacionPerfilList;
+    @OneToMany(mappedBy = "idPerfil")
+    private List<Publicacion> publicacionList;
 
+    public List<Publicacion> getPublicacionList() {
+        return publicacionList;
+    }
+
+    public void setPublicacionList(List<Publicacion> publicacionList) {
+        this.publicacionList = publicacionList;
+    }
+    
+    public List<PublicacionUsuario> getPublicacionPerfilList() {
+        return publicacionPerfilList;
+    }
+
+    public void setPublicacionPerfilList(List<PublicacionUsuario> publicacionPerfilList) {
+        this.publicacionPerfilList = publicacionPerfilList;
+    }
+    
     public Perfil() {
     }
 

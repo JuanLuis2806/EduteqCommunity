@@ -5,10 +5,14 @@
  */
 package beans;
 
+import entities.Perfil;
+import entities.Publicacion;
 import entities.PublicacionUsuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -27,6 +31,21 @@ public class PublicacionUsuarioFacade extends AbstractFacade<PublicacionUsuario>
 
     public PublicacionUsuarioFacade() {
         super(PublicacionUsuario.class);
+    }
+    
+    public List<PublicacionUsuario> obtenerPublicaciones(Publicacion idPublicacion) {
+          TypedQuery<PublicacionUsuario> query = em.createQuery(
+                "SELECT pu FROM PublicacionUsuario pu WHERE pu.idPublicacion = :idPublicacion", PublicacionUsuario.class
+        );
+        query.setParameter("idPublicacion", idPublicacion);
+        List<PublicacionUsuario> publicaciones = query.getResultList();
+
+        if (publicaciones.size() > 0) {
+            return publicaciones;
+        }
+
+        return null;
+
     }
     
 }

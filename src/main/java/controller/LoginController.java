@@ -42,9 +42,9 @@ public class LoginController extends HttpServlet {
     public void init() throws ServletException {
         getServletContext().setAttribute("estados", estadoFacade.findAll());
         getServletContext().setAttribute("divisiones", divisionFacade.findAll());
-        
+
     }
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         switch (request.getServletPath()) {
@@ -61,15 +61,15 @@ public class LoginController extends HttpServlet {
                     if (usuario.getIdTipoUsuario().getId() == Estatus.ESTATUS_ADMINISTRADOR) {
                         vista = "mi-cuenta-admin";
                     }
-                    
+
                     if (usuario.getIdTipoUsuario().getId() == Estatus.ESTATUS_ESTUDIANTE) {
                         vista = "mi-cuenta-usuario";
                     }
-                    
+
                     if (session.getAttribute("perfil") != null) {
                         perfil = (Perfil) session.getAttribute("perfil");
                     }
-                    
+
                     session.setAttribute("perfil", perfil);
                     request.setAttribute("perfil", perfil);
                     request.setAttribute("usuario", usuario);
@@ -79,17 +79,17 @@ public class LoginController extends HttpServlet {
                 }
                 break;
             }
-            
+
             case Urls.URL_CERRAR_SESION: {
                 session = request.getSession(true);
                 session.removeAttribute("perfil");
                 session.removeAttribute("usuario");
                 session.invalidate();
-                
+
                 response.sendRedirect("login");
                 break;
             }
-                
+
         }
     }
 

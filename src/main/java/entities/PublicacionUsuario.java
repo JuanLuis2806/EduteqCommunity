@@ -42,12 +42,12 @@ public class PublicacionUsuario implements Serializable {
     @Size(max = 45)
     @Column(name = "comentario")
     private String comentario;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    @JoinColumn(name = "id_publicacion ", referencedColumnName = "id")
     @ManyToOne
-    private Publicacion idUsuario;
-    @JoinColumn(name = "id_publicacion", referencedColumnName = "id")
+    private Publicacion idPublicacion;
+    @JoinColumn(name = "id_perfil", referencedColumnName = "id")
     @ManyToOne
-    private Usuario idPublicacion;
+    private Perfil idPerfil ;
 
     public PublicacionUsuario() {
     }
@@ -72,19 +72,19 @@ public class PublicacionUsuario implements Serializable {
         this.comentario = comentario;
     }
 
-    public Publicacion getIdUsuario() {
-        return idUsuario;
+    public Perfil getIdPerfil() {
+        return idPerfil;
     }
 
-    public void setIdUsuario(Publicacion idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdPerfil(Perfil idPerfil) {
+        this.idPerfil = idPerfil;
     }
 
-    public Usuario getIdPublicacion() {
+    public Publicacion getIdPublicacion() {
         return idPublicacion;
     }
 
-    public void setIdPublicacion(Usuario idPublicacion) {
+    public void setIdPublicacion(Publicacion idPublicacion) {
         this.idPublicacion = idPublicacion;
     }
 

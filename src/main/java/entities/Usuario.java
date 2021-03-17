@@ -59,8 +59,6 @@ public class Usuario implements Serializable {
     private Integer estatus;
     @OneToMany(mappedBy = "idUsuario")
     private List<Mercado> mercadoList;
-    @OneToMany(mappedBy = "idPublicacion")
-    private List<PublicacionUsuario> publicacionUsuarioList;
     @OneToMany(mappedBy = "idUsuario")
     private List<Eventos> eventosList;
     @JoinColumn(name = "id_division", referencedColumnName = "id")
@@ -126,15 +124,6 @@ public class Usuario implements Serializable {
 
     public void setMercadoList(List<Mercado> mercadoList) {
         this.mercadoList = mercadoList;
-    }
-
-    @XmlTransient
-    public List<PublicacionUsuario> getPublicacionUsuarioList() {
-        return publicacionUsuarioList;
-    }
-
-    public void setPublicacionUsuarioList(List<PublicacionUsuario> publicacionUsuarioList) {
-        this.publicacionUsuarioList = publicacionUsuarioList;
     }
 
     @XmlTransient
