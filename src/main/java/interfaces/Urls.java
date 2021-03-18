@@ -20,6 +20,8 @@ public interface Urls {
     static final String URL_EDITAR_CONTRASENA = "/editar-contrasena";
     static final String URL_MERCADO = "/mercado";
     static final String URL_EVENTOS = "/eventos";
+    static final String URL_LISTAEVENTOS = "/listaEventos";
+    static final String URL_REGISTROEVENTOS = "/registroEvento";
     static final String URL_FORO = "/foro";
     
 }

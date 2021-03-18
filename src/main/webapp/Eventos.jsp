@@ -130,7 +130,7 @@
                                             <div class="single-event">
                                                 <img class="img-responsive" src="img/noticias/not3.png" alt="event-image">
                                                 <h4>Diplomado en Tutoría de la UTEQ</h4>
-                                                <h5>De manera virtual, inició el Diplomado en Tutoría de la UTEQ, con la participación de 22 profesores que conforman a la cuarta generación, quienes se capacitarán durante 6 meses con el objetivo de contar con conocimientos.</h5>
+                                                    <h5>De manera virtual, inició el Diplomado en Tutoría de la UTEQ, con la participación de 22 profesores que conforman a la cuarta generación, quienes se capacitarán durante 6 meses con el objetivo de contar con conocimientos.</h5>
                                             </div>
                                         </div>
                                     </div>
