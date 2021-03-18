@@ -145,7 +145,7 @@
                                 </form>
                             </div>
                             <br><br><br><br>
-                            <div id="afterIdiomas"></div>
+                            <div id="afterIDIOMAS"></div>
                             
                         </div>
                     </div>

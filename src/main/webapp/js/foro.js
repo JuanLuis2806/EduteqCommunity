@@ -43,7 +43,9 @@ function crearPregunta() {
                     console.log(data);
                     const contenido = crearContenidoPregunta(data);
                     $("#after" + division).after(contenido);
+                    $("#pregunta").val("");
                     $("#formPregunta" + division).hide("hide");
+                
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -69,6 +71,7 @@ function crearComentario() {
                     console.log(data);
                     const contenido = asignarRespuestaAPublicacion(data);
                     $("#pregunta" + data.publicacionId).append(contenido);
+                    $(".input100").val("");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -209,7 +212,7 @@ function crearContenidoForos(data) {
                 $("#afterDTAI").after(contenido);
                 break;
             case 5:
-                $("#afterIdiomas").after(contenido);
+                $("#afterIDIOMAS").after(contenido);
                 break;
             case 6:
                 $("#afterUTEQ").after(contenido);
