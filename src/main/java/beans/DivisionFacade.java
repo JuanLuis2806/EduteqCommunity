@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- *
+ * 
  * @author juan
  */
 @Stateless
@@ -28,5 +28,5 @@ public class DivisionFacade extends AbstractFacade<Division> {
     public DivisionFacade() {
         super(Division.class);
     }
-    
+
 }

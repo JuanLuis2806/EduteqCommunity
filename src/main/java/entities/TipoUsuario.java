@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author juan
  */
 @Entity
@@ -114,5 +114,5 @@ public class TipoUsuario implements Serializable {
     public String toString() {
         return "entities.TipoUsuario[ id=" + id + " ]";
     }
-    
+
 }

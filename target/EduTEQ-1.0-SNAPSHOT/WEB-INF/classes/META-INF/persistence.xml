@@ -14,5 +14,6 @@
     <class>entities.Publicacion</class>
     <class>entities.TipoEvento</class>
     <class>entities.TipoUsuario</class>
+    <class>entities.ComentariosMercado</class>
   </persistence-unit>
 </persistence>

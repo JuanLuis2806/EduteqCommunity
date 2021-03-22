@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author juan
  */
 @Entity
@@ -54,9 +55,12 @@ public class Usuario implements Serializable {
     @Size(max = 45)
     @Column(name = "contrasena")
     private String contrasena;
+    @Basic(optional = false)
     @NotNull
     @Column(name = "estatus")
-    private Integer estatus;
+    private int estatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<ComentariosMercado> comentariosMercadoList;
     @OneToMany(mappedBy = "idUsuario")
     private List<Mercado> mercadoList;
     @OneToMany(mappedBy = "idPublicacion")
@@ -77,6 +81,11 @@ public class Usuario implements Serializable {
 
     public Usuario(Integer id) {
         this.id = id;
+    }
+
+    public Usuario(Integer id, int estatus) {
+        this.id = id;
+        this.estatus = estatus;
     }
 
     public Integer getId() {
@@ -110,13 +119,22 @@ public class Usuario implements Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
-    public Integer getEstatus() {
+
+    public int getEstatus() {
         return estatus;
     }
 
-    public void setEstatus(Integer estatus) {
+    public void setEstatus(int estatus) {
         this.estatus = estatus;
+    }
+
+    @XmlTransient
+    public List<ComentariosMercado> getComentariosMercadoList() {
+        return comentariosMercadoList;
+    }
+
+    public void setComentariosMercadoList(List<ComentariosMercado> comentariosMercadoList) {
+        this.comentariosMercadoList = comentariosMercadoList;
     }
 
     @XmlTransient
@@ -196,4 +214,4 @@ public class Usuario implements Serializable {
         return "entities.Usuario[ id=" + id + " ]";
     }
 
-    }
+}

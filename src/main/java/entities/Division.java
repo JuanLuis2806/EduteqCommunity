@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities;
 
 import java.io.Serializable;
@@ -22,8 +23,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author juan
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 @Entity
 @Table(name = "division")
@@ -40,7 +41,7 @@ public class Division implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 400)
     @Column(name = "nombre")
     private String nombre;
     @OneToMany(mappedBy = "idDivision")
@@ -88,7 +89,7 @@ public class Division implements Serializable {
     public void setCarreraList(List<Carrera> carreraList) {
         this.carreraList = carreraList;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -113,5 +114,5 @@ public class Division implements Serializable {
     public String toString() {
         return "entities.Division[ id=" + id + " ]";
     }
-    
+
 }

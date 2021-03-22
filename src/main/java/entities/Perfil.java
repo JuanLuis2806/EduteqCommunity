@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities;
 
 import java.io.Serializable;
@@ -17,13 +18,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author juan
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 @Entity
 @Table(name = "perfil")
@@ -65,7 +65,7 @@ public class Perfil implements Serializable {
     @Size(max = 45)
     @Column(name = "sexo")
     private String sexo;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "foto_perfil")
     private String fotoPerfil;
     @Column(name = "edad")
@@ -207,5 +207,5 @@ public class Perfil implements Serializable {
     public String toString() {
         return "entities.Perfil[ id=" + id + " ]";
     }
-    
+
 }

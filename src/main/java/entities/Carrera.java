@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author juan
  */
 @Entity
@@ -42,14 +42,14 @@ public class Carrera implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 50)
+    @Size(max = 400)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(mappedBy = "idCarrera")
-    private List<Perfil> perfilList;
     @JoinColumn(name = "id_division", referencedColumnName = "id")
     @ManyToOne
     private Division idDivision;
+    @OneToMany(mappedBy = "idCarrera")
+    private List<Perfil> perfilList;
 
     public Carrera() {
     }
@@ -74,6 +74,14 @@ public class Carrera implements Serializable {
         this.nombre = nombre;
     }
 
+    public Division getIdDivision() {
+        return idDivision;
+    }
+
+    public void setIdDivision(Division idDivision) {
+        this.idDivision = idDivision;
+    }
+
     @XmlTransient
     public List<Perfil> getPerfilList() {
         return perfilList;
@@ -83,14 +91,6 @@ public class Carrera implements Serializable {
         this.perfilList = perfilList;
     }
 
-    public Division getIdDivision() {
-        return idDivision;
-    }
-
-    public void setIdDivision(Division idDivision) {
-        this.idDivision = idDivision;
-    }
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -115,5 +115,5 @@ public class Carrera implements Serializable {
     public String toString() {
         return "entities.Carrera[ id=" + id + " ]";
     }
-    
+
 }

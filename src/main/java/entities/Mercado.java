@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,13 +19,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author juan
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 @Entity
 @Table(name = "mercado")
@@ -44,10 +49,10 @@ public class Mercado implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "descripcion")
     private String descripcion;
     @Size(max = 45)
@@ -62,6 +67,8 @@ public class Mercado implements Serializable {
     @Size(max = 45)
     @Column(name = "fecha_final")
     private String fechaFinal;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPublicacion")
+    private List<ComentariosMercado> comentariosMercadoList;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario idUsuario;
@@ -129,6 +136,15 @@ public class Mercado implements Serializable {
         this.fechaFinal = fechaFinal;
     }
 
+    @XmlTransient
+    public List<ComentariosMercado> getComentariosMercadoList() {
+        return comentariosMercadoList;
+    }
+
+    public void setComentariosMercadoList(List<ComentariosMercado> comentariosMercadoList) {
+        this.comentariosMercadoList = comentariosMercadoList;
+    }
+
     public Usuario getIdUsuario() {
         return idUsuario;
     }
@@ -161,5 +177,5 @@ public class Mercado implements Serializable {
     public String toString() {
         return "entities.Mercado[ id=" + id + " ]";
     }
-    
+
 }

@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * 
  * @author juan
  */
 @Stateless
@@ -43,7 +43,7 @@ public class PerfilFacade extends AbstractFacade<Perfil> {
         if (perfiles.size() > 0) {
             Perfil perfil = perfiles.get(0);
             return perfil;
-        }
+}
 
         return null;
 

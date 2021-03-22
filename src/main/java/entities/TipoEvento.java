@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
+ * 
  * @author juan
  */
 @Entity
@@ -101,5 +101,5 @@ public class TipoEvento implements Serializable {
     public String toString() {
         return "entities.TipoEvento[ id=" + id + " ]";
     }
-    
+
 }

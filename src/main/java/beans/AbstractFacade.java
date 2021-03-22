@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
- *
+ * 
  * @author juan
  */
 public abstract class AbstractFacade<T> {
@@ -60,5 +60,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

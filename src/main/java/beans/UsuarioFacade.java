@@ -10,19 +10,19 @@ import javax.persistence.TypedQuery;
 
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
-    
+
     @PersistenceContext(unitName = "my_persistence_unit")
     private EntityManager em;
-    
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+
     public Usuario findByCorreo(String correo){
         List<Usuario> usuarios;
         Query query = em.createNamedQuery("Usuario.findByCorreo");
@@ -31,7 +31,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         
         if (usuarios.size() > 0) {
             return usuarios.get(0);
-        }
+}
         return null;
         
     }

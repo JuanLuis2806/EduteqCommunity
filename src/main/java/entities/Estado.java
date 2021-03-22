@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities;
 
 import java.io.Serializable;
@@ -22,8 +23,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
- *
- * @author juan
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 @Entity
 @Table(name = "estado")
@@ -102,5 +103,5 @@ public class Estado implements Serializable {
     public String toString() {
         return "entities.Estado[ id=" + id + " ]";
     }
-    
+
 }
