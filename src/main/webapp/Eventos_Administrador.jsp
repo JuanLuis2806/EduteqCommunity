@@ -122,69 +122,72 @@
                     <div class="col-12 col-md-12">
                         <div class="academy-blog-posts" style="text-align: center">
                             <div class="row">
-
-
+                                <strong class="login100-form-title p-b-32 text-center">
+                                    Registrar un nuevo Evento
+                                </strong>
                                 <form class="login100-form validate-form flex-sb flex-w">
-                                    <span class="login100-form-title p-b-32">
-                                        Formulario para Evento
-                                    </span>
+                                    <div class="col-sm-12">
+                                        <div class="row"> 
 
-                                    <span class="txt1 p-b-11">
-                                        Nombre del Evento
-                                    </span>
-                                    <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
-                                        <input class="input100" type="text" name="evento" id="evento" >
-                                        <span class="focus-input100"></span>
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <strong class="txt1 p-b-11">
+                                                    Nombre del Evento
+                                                </strong>
+                                                <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
+                                                    <input class="input100" type="text" name="evento" id="evento" >
+                                                    <span class="focus-input100"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <strong class="txt1 p-b-11">
+                                                    Tipo de Evento
+                                                </strong>
+                                                <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
+                                                    <select class="caja" id="estado" name="TipoEvento">
+                                                        <c:forEach var="tipo_evento" items="${tipoEvento}">
+                                                            <option value="${tipoEvento.id}">${tipoEvento.tipo_evento}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    <span class="focus-input100"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <span class="txt1 p-b-11">
-                                        Tipo de Evento
-                                    </span>
-                                    <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
-                                        <select class="caja" id="estado" name="TipoEvento">
-                                            <c:forEach var="tipo_evento" items="${tipoEvento}">
-                                                <option value="${tipoEvento.id}">${tipoEvento.tipo_evento}</option>
-                                            </c:forEach>
-                                        </select>
-                                        <span class="focus-input100"></span>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <strong class="txt1 p-b-11">
+                                                    Descripción del Evento
+                                                </strong>
+                                                <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
+                                                    <input class="input100" type="text" name="Desevento" >
+                                                    <span class="focus-input100"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <strong class="txt1 p-b-11">
+                                                    Imagen del Evento
+                                                </strong>
+                                                <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
+                                                    <input  type="file" name="imagen" />
+                                                    <span class="focus-input100"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <br><br>
-                                    <span class="txt1 p-b-11">
-                                        Descripción del Evento
-                                    </span>
-                                    <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
-
-                                        <input class="input100" type="text" name="Desevento" >
-
-                                        <span class="focus-input100"></span>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="container-login100-form-btn align-content-center" style="justify-content: center">
+                                                <button class="login100-form-btn">
+                                                    Crear Evento
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <br>
-
-
-                                    <span class="txt1 p-b-11">
-                                        Imagen del Evento
-                                    </span>
-                                    <div class="wrap-input100 validate-input m-b-36" data-validate = "Este campo es requerido">
-
-                                        <input  type="file" name="imagen" />
-
-                                        <span class="focus-input100"></span>
-                                    </div>
-
-                                    <br>
-                                    <div class="container-login100-form-btn">
-                                        <button class="login100-form-btn">
-                                            Crear Evento
-                                        </button>
-                                    </div>
-
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

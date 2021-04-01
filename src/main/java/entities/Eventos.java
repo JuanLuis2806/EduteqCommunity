@@ -43,13 +43,13 @@ public class Eventos implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 1000)
     @Column(name = "descripcion")
     private String descripcion;
-    @Size(max = 45)
+    @Size(max = 1000)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 45)
+    @Size(max = 1000)
     @Column(name = "imagen")
     private String imagen;
     @Size(max = 45)
