@@ -34,15 +34,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Division.findByNombre", query = "SELECT d FROM Division d WHERE d.nombre = :nombre")})
 public class Division implements Serializable {
 
+    @Size(max = 400)
+    @Column(name = "nombre")
+    private String nombre;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 45)
-    @Column(name = "nombre")
-    private String nombre;
     @OneToMany(mappedBy = "idDivision")
     private List<Usuario> usuarioList;
     @OneToMany(mappedBy = "idDivision")
@@ -73,13 +74,6 @@ public class Division implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     @XmlTransient
     public List<Usuario> getUsuarioList() {
@@ -122,6 +116,14 @@ public class Division implements Serializable {
     @Override
     public String toString() {
         return "entities.Division[ id=" + id + " ]";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
 }

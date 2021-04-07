@@ -3,21 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package beans;
 
-import entities.Mercado;
-import java.util.List;
+import entities.ComentariosMercado;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
- *
- * @author juan
+ * 
+ * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 @Stateless
-public class MercadoFacade extends AbstractFacade<Mercado> {
+public class ComentariosMercadoFacade extends AbstractFacade<ComentariosMercado> {
 
     @PersistenceContext(unitName = "my_persistence_unit")
     private EntityManager em;
@@ -27,19 +26,8 @@ public class MercadoFacade extends AbstractFacade<Mercado> {
         return em;
     }
 
-    public MercadoFacade() {
-        super(Mercado.class);
+    public ComentariosMercadoFacade() {
+        super(ComentariosMercado.class);
     }
-    
-    public List<Mercado> findAllProducts() {
-        List<Mercado> mercado;
-        Query query = em.createNamedQuery("Mercado.findAll");
-        mercado = query.getResultList();
 
-        if (0 < mercado.size()) {
-            return mercado;
-        }
-
-        return null;
-    }
 }

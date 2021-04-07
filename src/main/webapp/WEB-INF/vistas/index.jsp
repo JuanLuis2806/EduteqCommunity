@@ -152,9 +152,9 @@
                             <div align="center" class="blog-post-thumb mb-50 ">
                                 <img src="img/iconos/mercado2.png" alt="">
                             </div>
-                            <a align="center" href="mercado.jsp" class="post-title">Mercado</a><br>
+                            <a align="center" href="agregarProducto" class="post-title">Mercado</a><br>
                             <p>Diseñado para que los estudiantes publiquen articulos que quieran vender como libros, calculadoras , material electronico etc.</p>
-                            <a  align="center" href="mercado.jsp" class="btn academy-btn btn-sm mt-15">Navegar</a>
+                            <a  align="center" href="agregarProducto" class="btn academy-btn btn-sm mt-15">Navegar</a>
                         </div>
                     </div>
                 </div>
