@@ -71,17 +71,17 @@ public class EventosController extends HttpServlet {
                     response.sendRedirect("login");
                 }
 
+                List<TipoEvento> tiposEventos = tipoEventoFacade.findAll();
+                List<Eventos> eventos = eventosFacade.findAll();
+
+                request.setAttribute("eventos", eventos);
+                request.setAttribute("tipoEventos", tiposEventos);
                 request.setAttribute("perfil", perfil);
 
                 if (perfil.getIdUsuario().getIdTipoUsuario().getId() == Estatus.ESTATUS_ADMINISTRADOR) {
-                    List<TipoEvento> tiposEventos = tipoEventoFacade.findAll();
-                    List<Eventos> eventos = eventosFacade.findAll();
-
-                    request.setAttribute("eventos", eventos);
-                    request.setAttribute("tipoEventos", tiposEventos);
                     request.getRequestDispatcher(Urls.RUTA_VISTAS + "Eventos_Administrador.jsp").forward(request, response);
                 } else {
-                    request.getRequestDispatcher(Urls.RUTA_VISTAS + "Eventos.jsp").forward(request, response);
+                    request.getRequestDispatcher(Urls.RUTA_VISTAS_ESTUDIANTE + "Eventos.jsp").forward(request, response);
                 }
 
             }
