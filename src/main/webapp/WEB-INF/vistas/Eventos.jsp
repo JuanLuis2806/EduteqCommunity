@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,105 +46,73 @@
                         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="img/noticias/13.png" alt="First slide">
-                            <div class="header-text hidden-xs">
-                                <div class="col-md-12 text-center">
-                                    <h2>
-                                        <span><strong>Platica sobre la situación de la Pandemia</strong></span>
-                                    </h2>
-                                    <br>
+                        <c:forEach var="evento" items="${eventos}">
+                            <c:if test = "${evento.id == 1}">
+                                <div class="item active">
+                                </c:if>
+                                <c:if test = "${evento.id != 1}">
+                                    <div class="item">
+                                    </c:if>
+                                    <img src="img/noticias/${evento.imagen}" alt="First slide">
+                                    <div class="header-text hidden-xs">
+                                        <div class="col-md-12 text-center">
+                                            <h2>
+                                                <span><strong>${evento.nombre}</strong></span>
+                                            </h2>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="footer-text hidden-xs">
+                                        <div class="col-md-12 text-left">
+                                            <strong><h2>${evento.descripcion}</h2></strong>
+                                            <br>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="footer-text hidden-xs">
-                                <div class="col-md-12 text-left">
-                                    <strong><h2>Como parte de las colaboraciones que la Universidad Tecnológica de Querétaro (a través del Creativity and Innovation Center) desarrolla con su socio estratégico 
-                                            KIT HUB, fue realizada la plática virtual ?Imágenes para consientizar .</h2></strong>
-                                    <br>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
-                        <div class="item">
-                            <img src="img/noticias/not2.jpg" alt="First slide">
-                            <!-- Static Header -->
-                            <div class="header-text hidden-xs">
-                                <div class="col-md-12 text-center">
-                                    <h2>
-                                        <span><strong>Reunión de alumnos y Profesores</strong></span>
-                                    </h2>
-                                    <br>
-                                </div>
-                            </div>
-                            <div class="footer-text hidden-xs">
-                                <div class="col-md-12 text-left">
-                                    <strong><h2>Más de 200 jefes de grupo de la Universidad Tecnológica de Querétaro ? de los turnos matutino y vespertino ? se reunieron de 
-                                            forma virtual con autoridades de esta institución, espacio en el que se hizo un llamado..</h2></strong>
-                                    <br>
-                                </div>
-                            </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div><br><br><br><br><br>
+            <section id="explore">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-md-offset-2 col-sm-5">
+                            <a href="index.jsp" class="pull-right"><img title="profile image" class="img-responsive" src="img/bg-img/nuevopre.png"></a>
+                        </div>				
+                        <div class="col-sm-12 col-md-12">					
                         </div>
-                        <div class="item">
-                            <img src="img/noticias/not3.png" alt="Third slide">
+                    </div>
+                </div>
+            </section>
 
-                            <div class="header-text hidden-xs">
-                                <div class="col-md-12 text-center">
-                                    <h2>
-                                        <span><strong>Diplomado en Tutoría de la UTEQ</strong></span>
-                                    </h2>
-                                    <br>
-                                </div>
-                            </div>
-                            <div class="footer-text hidden-xs">
-                                <div class="col-md-12 text-left">
-                                    <strong><h2>De manera virtual, inició el Diplomado en Tutoría de la UTEQ, con la participación de 22 profesores que conforman a la cuarta generación, quienes se capacitarán 
-                                            durante 6 meses con el objetivo de contar con conocimientos.</h2></strong>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                </div>
-            </div>
-        </div><br><br><br><br><br>
-        <section id="explore">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-md-offset-2 col-sm-5">
-                        <a href="index.jsp" class="pull-right"><img title="profile image" class="img-responsive" src="img/bg-img/nuevopre.png"></a>
-                    </div>				
-                    <div class="col-sm-12 col-md-12">					
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <script src="js/jquery/jquery-2.2.4.min.js"></script>
-        <script src="js/bootstrap/popper.min.js"></script>
-        <script src="js/bootstrap/bootstrap.min.js"></script>
-        <script src="js/plugins/plugins.js"></script>
-        <script src="js/active.js"></script>
-        <script type="text/javascript" src="jss/jquery.js"></script>
-        <script type="text/javascript" src="jss/bootstrap.min.js"></script>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="jss/gmaps.js"></script>
-        <script type="text/javascript" src="jss/smoothscroll.js"></script>
-        <script type="text/javascript" src="jss/jquery.parallax.js"></script>
-        <script type="text/javascript" src="jss/coundown-timer.js"></script>
-        <script type="text/javascript" src="jss/jquery.scrollTo.js"></script>
-        <script type="text/javascript" src="jss/jquery.nav.js"></script>
-        <script type="text/javascript" src="jss/main.js"></script>  
-        <script src="js/bootstrap/bootstrap.min.js"></script>
-        <script src="js/plugins/plugins.js"></script>
-        <script src="js/active.js"></script>
-        <script  src="js/carrusell/carrusell.js"></script>
-        <script src="js/active.js"></script>
-        <script src="js/main.js"></script>
-        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="js/Slider.js"></script>
+            <script src="js/jquery/jquery-2.2.4.min.js"></script>
+            <script src="js/bootstrap/popper.min.js"></script>
+            <script src="js/bootstrap/bootstrap.min.js"></script>
+            <script src="js/plugins/plugins.js"></script>
+            <script src="js/active.js"></script>
+            <script type="text/javascript" src="jss/jquery.js"></script>
+            <script type="text/javascript" src="jss/bootstrap.min.js"></script>
+            <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+            <script type="text/javascript" src="jss/gmaps.js"></script>
+            <script type="text/javascript" src="jss/smoothscroll.js"></script>
+            <script type="text/javascript" src="jss/jquery.parallax.js"></script>
+            <script type="text/javascript" src="jss/coundown-timer.js"></script>
+            <script type="text/javascript" src="jss/jquery.scrollTo.js"></script>
+            <script type="text/javascript" src="jss/jquery.nav.js"></script>
+            <script type="text/javascript" src="jss/main.js"></script>  
+            <script src="js/bootstrap/bootstrap.min.js"></script>
+            <script src="js/plugins/plugins.js"></script>
+            <script src="js/active.js"></script>
+            <script  src="js/carrusell/carrusell.js"></script>
+            <script src="js/active.js"></script>
+            <script src="js/main.js"></script>
+            <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script><script  src="js/Slider.js"></script>
     </body>
 </html>
