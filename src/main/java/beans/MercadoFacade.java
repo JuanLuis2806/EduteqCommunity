@@ -6,9 +6,11 @@
 package beans;
 
 import entities.Mercado;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +31,15 @@ public class MercadoFacade extends AbstractFacade<Mercado> {
         super(Mercado.class);
     }
     
+    public List<Mercado> findAllProducts() {
+        List<Mercado> mercado;
+        Query query = em.createNamedQuery("Mercado.findAll");
+        mercado = query.getResultList();
+
+        if (0 < mercado.size()) {
+            return mercado;
+        }
+
+        return null;
+    }
 }

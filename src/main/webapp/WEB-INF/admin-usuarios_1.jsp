@@ -59,7 +59,7 @@
                                         <li><a href="index">Pagina Principal</a>
                                         <li><a href="foro">Foro</a></li>
                                         <li><a href="eventos">Eventos</a></li>
-                                        <li><a href="mercado">Mercado UTEQ</a></li>
+                                        <li><a href="agregarProducto">Mercado UTEQ</a></li>
                                         <li id='usuarioTab'><a href="admin-usuarios">USUARIOS</a></li>
                                         <li><a href="">Sesión</a>
                                             <ul class="dropdown">

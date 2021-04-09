@@ -25,5 +25,7 @@ public interface Urls {
     static final String URL_CREAR_PUBLICACION = "/crear-publicacion";
     static final String URL_CREAR_COMENTARIO = "/crear-comentario";
     static final String URL_OBTENER_PUNBLICACION_RESPUESTA = "/publicacion-respuesta";
+    static final String URL_REGISTRO_PRODUCTO = "/agregarProducto";
+    static final String URL_AGREGAR_COMENTARIO = "/agregarComentario";
     
 }

@@ -8,6 +8,7 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,12 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")})
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @Size(max = 45)
     @Column(name = "correo")
     private String correo;
@@ -54,9 +49,19 @@ public class Usuario implements Serializable {
     @Size(max = 45)
     @Column(name = "contrasena")
     private String contrasena;
+    @Basic(optional = false)
     @NotNull
     @Column(name = "estatus")
-    private Integer estatus;
+    private int estatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
+    private List<ComentariosMercado> comentariosMercadoList;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @OneToMany(mappedBy = "idUsuario")
     private List<Mercado> mercadoList;
     @OneToMany(mappedBy = "idUsuario")
@@ -85,37 +90,6 @@ public class Usuario implements Serializable {
         this.id = id;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    
-    public Integer getEstatus() {
-        return estatus;
-    }
-
-    public void setEstatus(Integer estatus) {
-        this.estatus = estatus;
-    }
 
     @XmlTransient
     public List<Mercado> getMercadoList() {
@@ -183,6 +157,47 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "entities.Usuario[ id=" + id + " ]";
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
+    }
+
+    @XmlTransient
+    public List<ComentariosMercado> getComentariosMercadoList() {
+        return comentariosMercadoList;
+    }
+
+    public void setComentariosMercadoList(List<ComentariosMercado> comentariosMercadoList) {
+        this.comentariosMercadoList = comentariosMercadoList;
     }
 
     }

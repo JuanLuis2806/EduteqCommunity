@@ -6,7 +6,9 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,9 +18,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "mercado")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Mercado.findAll", query = "SELECT m FROM Mercado m"),
+    @NamedQuery(name = "Mercado.findAll", query = "SELECT m FROM Mercado m ORDER BY m.id DESC"),
     @NamedQuery(name = "Mercado.findById", query = "SELECT m FROM Mercado m WHERE m.id = :id"),
     @NamedQuery(name = "Mercado.findByNombre", query = "SELECT m FROM Mercado m WHERE m.nombre = :nombre"),
     @NamedQuery(name = "Mercado.findByDescripcion", query = "SELECT m FROM Mercado m WHERE m.descripcion = :descripcion"),
@@ -38,16 +42,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Mercado.findByFechaFinal", query = "SELECT m FROM Mercado m WHERE m.fechaFinal = :fechaFinal")})
 public class Mercado implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 45)
+    @Size(max = 500)
     @Column(name = "descripcion")
     private String descripcion;
     @Size(max = 45)
@@ -62,6 +60,14 @@ public class Mercado implements Serializable {
     @Size(max = 45)
     @Column(name = "fecha_final")
     private String fechaFinal;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPublicacion")
+    private List<ComentariosMercado> comentariosMercadoList;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne
     private Usuario idUsuario;
@@ -81,37 +87,6 @@ public class Mercado implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    public String getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(String precio) {
-        this.precio = precio;
-    }
 
     public String getFechaInicio() {
         return fechaInicio;
@@ -160,6 +135,47 @@ public class Mercado implements Serializable {
     @Override
     public String toString() {
         return "entities.Mercado[ id=" + id + " ]";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    @XmlTransient
+    public List<ComentariosMercado> getComentariosMercadoList() {
+        return comentariosMercadoList;
+    }
+
+    public void setComentariosMercadoList(List<ComentariosMercado> comentariosMercadoList) {
+        this.comentariosMercadoList = comentariosMercadoList;
     }
     
 }

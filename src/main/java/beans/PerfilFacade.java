@@ -49,4 +49,20 @@ public class PerfilFacade extends AbstractFacade<Perfil> {
 
     }
 
+    public Perfil getPerfil(Usuario idUsuario) {
+        TypedQuery<Perfil> query = em.createQuery(
+                "SELECT p FROM Perfil p WHERE p.idUsuario = :usuario", Perfil.class
+        );
+        query.setParameter("usuario", idUsuario);
+        List<Perfil> perfiles = query.getResultList();
+
+        if (perfiles.size() > 0) {
+            Perfil perfil = perfiles.get(0);
+            return perfil;
+        }
+
+        return null;
+
+    }
+    
 }
