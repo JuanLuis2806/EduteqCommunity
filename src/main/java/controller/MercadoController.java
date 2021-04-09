@@ -1,7 +1,13 @@
 package controller;
 
+import beans.ComentariosMercadoFacade;
 import beans.MercadoFacade;
+import beans.PerfilFacade;
+import com.google.gson.Gson;
+import dtos.MercadoDTO;
+import entities.ComentariosMercado;
 import entities.Mercado;
+import entities.Perfil;
 import entities.Usuario;
 import interfaces.Urls;
 import java.io.IOException;
@@ -18,7 +24,8 @@ import javax.servlet.http.HttpSession;
 import services.SubirArchivoAServidor;
 
 @WebServlet(name = "MercadoController", urlPatterns = {
-    Urls.URL_REGISTRO_PRODUCTO
+    Urls.URL_REGISTRO_PRODUCTO,
+    Urls.URL_AGREGAR_COMENTARIO
 })
 @MultipartConfig
 public class MercadoController extends HttpServlet {
@@ -29,6 +36,14 @@ public class MercadoController extends HttpServlet {
     @EJB
     private MercadoFacade mercadoFacade;
     private Mercado mercado;
+
+    @EJB
+    private ComentariosMercadoFacade comentariosMercadoFacade;
+    private ComentariosMercado comentariosMercadoEntity;
+
+    @EJB
+    private PerfilFacade perfilFacade;
+    private Perfil perfilEntity;
 
     private Usuario usuario;
 
@@ -61,12 +76,42 @@ public class MercadoController extends HttpServlet {
 
                 request.setAttribute("usuario", usuarioProductos);
 
-                List<Mercado> productos = new ArrayList<>();
-                productos = mercadoFacade.findAllProducts();
-                productos.get(0).getIdUsuario().getMatricula();
-              
+                List<List<MercadoDTO>> productosComentarios = new ArrayList<>();
+                List<Mercado> productoComentario = mercadoFacade.findAllProducts();
 
-                request.setAttribute("productos", productos);
+                for (Mercado productoC : productoComentario) {
+                    List<MercadoDTO> productoM = new ArrayList<>();
+                    MercadoDTO prod = new MercadoDTO();
+
+                    prod.setDescripcion(productoC.getDescripcion());
+                    prod.setPrecio(productoC.getPrecio());
+                    prod.setImagen(productoC.getImagen());
+                    prod.setMatricula(productoC.getIdUsuario().getMatricula());
+                    prod.setPublicacionID(productoC.getId());
+                    prod.setNombreProducto(productoC.getNombre());
+
+                    productoM.add(prod);
+
+                    List<ComentariosMercado> comentariosMercado = comentariosMercadoFacade.obtenerComentarios(productoC);
+
+                    if (comentariosMercado != null) {
+                        for (ComentariosMercado com : comentariosMercado) {
+                            Perfil perfil = perfilFacade.getPerfil(com.getIdUsuario());
+                            MercadoDTO comentario = new MercadoDTO();
+                            comentario.setComentario(com.getComentario());
+                            comentario.setIdUsuario(com.getIdUsuario().getId());
+                            comentario.setFotoPerfil(perfil.getFotoPerfil());
+                            comentario.setNombreUsuario(perfil.getNombre());
+                            comentario.setPublicacionID(productoC.getId());
+
+                            productoM.add(comentario);
+                        }
+                    }
+
+                    productosComentarios.add(productoM);
+                }
+                
+                request.setAttribute("productos", productosComentarios);
                 request.getRequestDispatcher(Urls.RUTA_VISTAS + "/vistas/mercado.jsp").forward(request, response);
                 break;
         }
@@ -105,6 +150,23 @@ public class MercadoController extends HttpServlet {
                 mercado.setIdUsuario(usuario);
                 mercadoFacade.create(mercado);
 
+                response.getWriter().print("OK");
+                break;
+            case Urls.URL_AGREGAR_COMENTARIO:
+                String comentario = request.getParameter("comentario");
+                int idPublicacion = Integer.parseInt(request.getParameter("id-producto"));
+
+                sesion = request.getSession(true);
+                Usuario usuarioComentario = (Usuario) sesion.getAttribute(nombreSesion);
+
+                Mercado mercadoC = mercadoFacade.find(idPublicacion);
+
+                comentariosMercadoEntity = new ComentariosMercado();
+                comentariosMercadoEntity.setIdUsuario(usuarioComentario);
+                comentariosMercadoEntity.setIdPublicacion(mercadoC);
+                comentariosMercadoEntity.setComentario(comentario);
+
+                comentariosMercadoFacade.create(comentariosMercadoEntity);
                 response.getWriter().print("OK");
                 break;
         }

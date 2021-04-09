@@ -1,3 +1,5 @@
+<%@page import="dtos.MercadoDTO"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="breadcumb-area bg-img" style="background-image: url(img/foro/foro3.jpg);">
     <div class="bradcumbContent">
@@ -12,7 +14,7 @@
                     <div class="row">
                         <h4>Realiza publicaciones  de articulos que quieras vender como libros , material electronico  hasta servicios  referentes a tu carrera.</h4>
                         <div class="col-12" id="formulario-producto">
-                            <form id="subir-producto" style="display: none;">
+                            <form id="subir-producto">
                                 <div class="single-blog-post mb-50 wow fadeInUp" data-wow-delay="300ms">
                                     <div align="center" class="blog-post-thumb mb-50">
                                         <input name="imagen-producto" id="imagen-producto" type="file" required="true" class="text-center center-block file-upload">
@@ -36,30 +38,53 @@
                                 </div>
                             </form>
                         </div>
-                        <c:forEach var="producto" items="${productos}">
+                        <div class="col-12 padre">
+                            <!-- aqui comienza el  1 for -->
+                            <%
+                                List<List<MercadoDTO>> productos = (List<List<MercadoDTO>>) request.getAttribute("productos");
+
+                                for (int i = 0; i < productos.size(); i++) {
+                                    for (int j = 0; j < productos.get(i).size(); j++) {
+                                        if (0 == j) {%>
                             <div class="col-12">
                                 <div class="single-blog-post mb-50 wow fadeInUp" data-wow-delay="300ms">
                                     <div align="center" class="blog-post-thumb mb-50">
-                                        <img src="imagenes/mercado/${producto.imagen}" alt="">
+                                        <img src="imagenes/<%=productos.get(i).get(j).getImagen()%>" alt="">
                                     </div>
                                     <label>Matricula:</label>
-                                    <a  class="post-date">${producto.idUsuario.matricula}</a><br>
+                                    <a  class="post-date"><%=productos.get(i).get(j).getMatricula()%></a><br>
                                     <label>Producto:</label>
-                                    <a  class="post-meta">${producto.nombre}<br></a>
+                                    <a  class="post-meta"><%=productos.get(i).get(j).getNombreProducto()%><br></a>
                                     <label>Descripción:</label>
                                     <div class="post-meta">
-                                        <a>${producto.descripcion}</a>
+                                        <a><%=productos.get(i).get(j).getDescripcion()%></a>
                                     </div>
                                     <label>Precio:</label>
                                     <div class="post-date">
-                                        <a>$${producto.precio}.00 </a>
-                                    </div><br><br>
-                                    <a  class="post-meta">
-                                        <textarea  cols="80" rows="10"  style="width:100%;"placeholder="comentar..." class="redondeadonorelieve"></textarea><br></a>
-                                    <a href="#" class="btn academy-btn btn-sm mt-15">Comentar</a>
+                                        <a>$<%=productos.get(i).get(j).getPrecio()%></a>
+                                    </div><br>
+                                    <%} else {%>
+                                    <div class="col-md-12">
+                                        <img src="imagenes/<%=productos.get(i).get(j).getFotoPerfil()%>" alt="" width="50" height="50"/>
+                                        <strong class="post-meta"><%=productos.get(i).get(j).getNombreUsuario()%>: <strong><%=productos.get(i).get(j).getComentario()%></strong></strong>
+                                    </div>
+                                    <%}
+                                        }%>
+                                    <br>
+                                    <form class="comentarios">
+                                        <input name="id-producto" id="id-producto" type="hidden" value="<%=productos.get(i).get(0).getPublicacionID()%>">
+                                        <input id="comentario" name="comentario" type="text" cols="80" rows="10"  style="width:100%;"placeholder="comentar..." class="redondeadonorelieve"><br>
+                                        <button type="submit" class="btn academy-btn btn-sm mt-15">
+                                            Comentar
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                        </c:forEach>
+                            <%}%>
+                            <!-- aqui comienza el  2 for -->
+
+                            <!-- aqui Termina el for -->
+                        </div>
                     </div>
                 </div>
             </div>

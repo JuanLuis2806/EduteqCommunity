@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ComentariosMercado.findAll", query = "SELECT c FROM ComentariosMercado c"),
-    @NamedQuery(name = "ComentariosMercado.findById", query = "SELECT c FROM ComentariosMercado c WHERE c.id = :id"),
+    @NamedQuery(name = "ComentariosMercado.findById", query = "SELECT c FROM ComentariosMercado c WHERE c.idPublicacion = :id"),
     @NamedQuery(name = "ComentariosMercado.findByComentario", query = "SELECT c FROM ComentariosMercado c WHERE c.comentario = :comentario")})
 public class ComentariosMercado implements Serializable {
 

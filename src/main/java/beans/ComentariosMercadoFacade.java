@@ -7,9 +7,12 @@
 package beans;
 
 import entities.ComentariosMercado;
+import entities.Mercado;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  * 
@@ -28,6 +31,20 @@ public class ComentariosMercadoFacade extends AbstractFacade<ComentariosMercado>
 
     public ComentariosMercadoFacade() {
         super(ComentariosMercado.class);
+    }
+    
+    public List<ComentariosMercado> obtenerComentarios(Mercado idProducto) {
+        List<ComentariosMercado> comentariosMercado;
+        Query query = em.createNamedQuery("ComentariosMercado.findById");
+        query.setParameter("id", idProducto);
+        
+        comentariosMercado = query.getResultList();
+        
+        if (!comentariosMercado.isEmpty()) {
+            return comentariosMercado;
+        }
+        
+        return null;
     }
 
 }

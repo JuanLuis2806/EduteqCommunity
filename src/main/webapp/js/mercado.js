@@ -1,5 +1,33 @@
 $(document).ready(function () {
+    agregarProducto();
+    agregarComentario();
+});
 
+function agregarComentario() {
+    $(".padre").on("submit", ".comentarios", function (e) {
+        e.preventDefault();
+
+        console.log($(this).serialize());
+
+        $.ajax({
+            type: 'POST',
+            url: "agregarComentario",
+            data: $(this).serialize(),
+            beforeSend: function (xhr) {},
+            success: function (data) {
+                if ("OK" === data) {
+                    mostrarNotificacion("success", "El producto se agrego correctamente perro!!!");
+                    location.reload();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                mostrarNotificacion("danger", "Ocurrio algun error, intentelo una vez mas!!!");
+            }
+        });
+    });
+}
+
+function agregarProducto() {
     const imagen = $("#imagen-producto"),
             nombre = $("#nombre-producto"),
             descripcion = $("#descripcion-producto"),
@@ -12,7 +40,6 @@ $(document).ready(function () {
         data.append("nombre", nombre.val());
         data.append("descripcion", descripcion.val());
         data.append("precio", precio.val());
-
         $.ajax({
             type: 'POST',
             url: "agregarProducto",
@@ -31,17 +58,16 @@ $(document).ready(function () {
                 mostrarNotificacion("danger", "Ocurrio algun error, intentelo una vez mas!!!");
             }
         });
-
-        function mostrarNotificacion(tipo = "succces", mensaje = "") {
-            $("#msg-" + tipo + " strong").remove();
-            $("#msg-" + tipo).append("<strong>" + mensaje + "</strong>");
-            $("#msg-" + tipo).show("fade");
-            setTimeout(function () {
-                $("#msg-" + tipo).hide("fade");
-            }, 2000);
-        }
-
     });
-});
+}
+
+function mostrarNotificacion(tipo = "succces", mensaje = "") {
+    $("#msg-" + tipo + " strong").remove();
+    $("#msg-" + tipo).append("<strong>" + mensaje + "</strong>");
+    $("#msg-" + tipo).show("fade");
+    setTimeout(function () {
+        $("#msg-" + tipo).hide("fade");
+    }, 2000);
+}
 
 
