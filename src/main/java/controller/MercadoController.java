@@ -79,38 +79,40 @@ public class MercadoController extends HttpServlet {
                 List<List<MercadoDTO>> productosComentarios = new ArrayList<>();
                 List<Mercado> productoComentario = mercadoFacade.findAllProducts();
 
-                for (Mercado productoC : productoComentario) {
-                    List<MercadoDTO> productoM = new ArrayList<>();
-                    MercadoDTO prod = new MercadoDTO();
+                if (productoComentario != null) {
+                    for (Mercado productoC : productoComentario) {
+                        List<MercadoDTO> productoM = new ArrayList<>();
+                        MercadoDTO prod = new MercadoDTO();
 
-                    prod.setDescripcion(productoC.getDescripcion());
-                    prod.setPrecio(productoC.getPrecio());
-                    prod.setImagen(productoC.getImagen());
-                    prod.setMatricula(productoC.getIdUsuario().getMatricula());
-                    prod.setPublicacionID(productoC.getId());
-                    prod.setNombreProducto(productoC.getNombre());
+                        prod.setDescripcion(productoC.getDescripcion());
+                        prod.setPrecio(productoC.getPrecio());
+                        prod.setImagen(productoC.getImagen());
+                        prod.setMatricula(productoC.getIdUsuario().getMatricula());
+                        prod.setPublicacionID(productoC.getId());
+                        prod.setNombreProducto(productoC.getNombre());
 
-                    productoM.add(prod);
+                        productoM.add(prod);
 
-                    List<ComentariosMercado> comentariosMercado = comentariosMercadoFacade.obtenerComentarios(productoC);
+                        List<ComentariosMercado> comentariosMercado = comentariosMercadoFacade.obtenerComentarios(productoC);
 
-                    if (comentariosMercado != null) {
-                        for (ComentariosMercado com : comentariosMercado) {
-                            Perfil perfil = perfilFacade.getPerfil(com.getIdUsuario());
-                            MercadoDTO comentario = new MercadoDTO();
-                            comentario.setComentario(com.getComentario());
-                            comentario.setIdUsuario(com.getIdUsuario().getId());
-                            comentario.setFotoPerfil(perfil.getFotoPerfil());
-                            comentario.setNombreUsuario(perfil.getNombre());
-                            comentario.setPublicacionID(productoC.getId());
+                        if (comentariosMercado != null) {
+                            for (ComentariosMercado com : comentariosMercado) {
+                                Perfil perfil = perfilFacade.getPerfil(com.getIdUsuario());
+                                MercadoDTO comentario = new MercadoDTO();
+                                comentario.setComentario(com.getComentario());
+                                comentario.setIdUsuario(com.getIdUsuario().getId());
+                                comentario.setFotoPerfil(perfil.getFotoPerfil());
+                                comentario.setNombreUsuario(perfil.getNombre());
+                                comentario.setPublicacionID(productoC.getId());
 
-                            productoM.add(comentario);
+                                productoM.add(comentario);
+                            }
                         }
-                    }
 
-                    productosComentarios.add(productoM);
+                        productosComentarios.add(productoM);
+                    }
                 }
-                
+
                 request.setAttribute("productos", productosComentarios);
                 request.getRequestDispatcher(Urls.RUTA_VISTAS + "/vistas/mercado.jsp").forward(request, response);
                 break;

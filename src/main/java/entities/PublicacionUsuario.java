@@ -39,7 +39,7 @@ public class PublicacionUsuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 1000)
     @Column(name = "comentario")
     private String comentario;
     @JoinColumn(name = "id_publicacion ", referencedColumnName = "id")
